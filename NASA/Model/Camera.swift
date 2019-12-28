@@ -19,7 +19,7 @@ enum Camera: String {
     case pancam
     case minites
     
-    func description() -> String {
+    var description: String {
         switch self {
         case .fhaz:     return "Front Hazard Avoidance Camera"
         case .rhaz:     return "Rear Hazard Avoidance Camera"

@@ -5,6 +5,8 @@
 //  Created by Gavin Butler on 26-12-2019.
 //  Copyright © 2019 Gavin Butler. All rights reserved.
 //
+//  Attribution:  www.raywenderlich.com
+//  https://www.raywenderlich.com/9334-uicollectionview-tutorial-getting-started
 
 import UIKit
 
@@ -12,25 +14,49 @@ class RoverPhotoCollectionController: UIViewController {
 
     let client = NASAAPIClient()
     var roverPhotos: [RoverPhoto] = []
+    let pendingOperations = PendingOperations()
     
+    //Collection View variables & constants:
+    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    let itemsPerRow: CGFloat = 3
+    
+    //Interface Builder Outlets:
     @IBOutlet weak var roverPhotoCollectionView: UICollectionView!
+    @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var cameraPicker: UIPickerView!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        roverPhotoCollectionView.dataSource = self
         
         let endpoint: NASAEndpoint = .marsRoverPhotos(rover: .curiosity, camera: .chemcam, date: Date(timeIntervalSince1970: 450000))
         print(endpoint.request.url)
         fetchRoverPhotos(at: endpoint)
         
     }
+    
+    @IBAction func roverSegmentedControlSelected(_ sender: UISegmentedControl) {
+        
+        //Reload the cameras
+        cameraPicker.reloadAllComponents()
+        
+        //Reset the endpoint
+        guard let segmentedControlSelection = sender.titleForSegment(at: sender.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
+        
+        let endpoint: NASAEndpoint = .marsRoverPhotos(rover: chosenRover, camera: nil, date: Date(timeIntervalSince1970: 0.0))
+        print("Endpoint: \(endpoint.request.url)")
+        
+        fetchRoverPhotos(at: endpoint)
+    }
+    
 }
 
-// MARK: - CollectionViewDataSource methods:
+// MARK: - CollectionView DataSource & delegate methods:
 
-extension RoverPhotoCollectionController: UICollectionViewDataSource {
+extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    //Datasource:
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -41,18 +67,116 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //Return a custom photo cell which is defined in IB and contains a simple reuseID property and IBOutlet to an imageView to display the image.
+        //Return a custom rover photo cell.
         let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseIdentifier, for: indexPath) as! RoverPhotoCell
+
+        let roverPhoto = roverPhotos[indexPath.row]
+        photoCell.configure(with: roverPhoto)
+        print("URL for image is: \(roverPhoto.imageURL.description)")
         
-//        if let images = self.images {
-//            photoCell.photoImageView.image = images[indexPath.row]
-//        }
+        if roverPhoto.imageDownloadState == .downloaded {   //If the image has already been downloaded, use that
+            photoCell.roverImageView.image = roverPhoto.image
+            photoCell.roverImageView.alpha = 1.0
+        } else {    //Otherwise set the default image for immediate rendering <Might not need this code>
+            photoCell.roverImageView.image = UIImage(named: "blank")!
+        }
+        
+        //if image download state is placeholder, attempt a download:
+        if  roverPhoto.imageDownloadState == .placeholder {
+            downloadImage(roverPhoto, at: indexPath)
+        }
         
         return photoCell
     }
     
+    //Delegate:
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
+
+//MARK:- Pickerview delegation & data source
+extension RoverPhotoCollectionController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //Return the number of items in the static datasource for the associated rover
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return 0 }
+        
+        return chosenRover.cameras.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return NSAttributedString(string: "Error") }
+        
+        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        return NSAttributedString(string: chosenRover.cameras[row].description, attributes: attributes)
+    }
+    
+    //Use the selected row as input for the endpoint.
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
+        
+        print("Picked Rover \(segmentedControlSelection) and camera: \(chosenRover.cameras[row].description)")
+    }
     
 }
+
+
+//MARK:- Helper Methods:
+extension RoverPhotoCollectionController {
+    
+    func downloadImage (_ roverPhoto: RoverPhoto, at indexPath: IndexPath) {
+        
+        //Don’t do anything if this download is already in progress.
+        if let _ = pendingOperations.downloadsInProgress[indexPath] {
+            return
+        }
+        
+        //Otherwise instantiate a RoverPhotoDownloader operation, set it’s completion handler, register the operation in the tracker dictionary (downloadsInProgress), and add it to the queue for execution.
+        let downloader = RoverPhotoDownloader(roverPhoto: roverPhoto)
+        
+        downloader.completionBlock = {
+            if downloader.isCancelled {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+                self.roverPhotoCollectionView.reloadItems(at: [indexPath])
+            }
+        }
+        
+        pendingOperations.downloadsInProgress[indexPath] = downloader
+        pendingOperations.downloadQueue.addOperation(downloader)
+    }
+}
+
 
 //MARK: - Networking
 extension RoverPhotoCollectionController {

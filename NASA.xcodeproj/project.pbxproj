@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8633F43C23B6A5E5006104B8 /* RoverPhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */; };
+		8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43D23B6DF55006104B8 /* PendingOperations.swift */; };
 		86692BFE23B50D360047DA1E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692BFD23B50D360047DA1E /* Endpoint.swift */; };
 		86692C0023B50EFB0047DA1E /* ParameterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692BFF23B50EFB0047DA1E /* ParameterKey.swift */; };
 		86692C0223B510770047DA1E /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C0123B510770047DA1E /* Rover.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoDownloader.swift; sourceTree = "<group>"; };
+		8633F43D23B6DF55006104B8 /* PendingOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
 		86692BFD23B50D360047DA1E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		86692BFF23B50EFB0047DA1E /* ParameterKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterKey.swift; sourceTree = "<group>"; };
 		86692C0123B510770047DA1E /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */,
 				86692BFF23B50EFB0047DA1E /* ParameterKey.swift */,
 				86692C0F23B52FDD0047DA1E /* ImageDownloadState.swift */,
+				8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */,
+				8633F43D23B6DF55006104B8 /* PendingOperations.swift */,
 				86692C0823B52D2C0047DA1E /* Error */,
 			);
 			path = Network;
@@ -230,12 +236,14 @@
 			files = (
 				86692C1023B52FDD0047DA1E /* ImageDownloadState.swift in Sources */,
 				86692C0423B515700047DA1E /* Camera.swift in Sources */,
+				8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */,
 				866DCF4523B3F6B6001AEE0F /* ViewController.swift in Sources */,
 				86692C1423B534460047DA1E /* NASAAPIClient.swift in Sources */,
 				8679FCCF23B3FA5800AC7AD3 /* EndpointExamples.swift in Sources */,
 				86692C0E23B52E630047DA1E /* RoverPhoto.swift in Sources */,
 				86692C0A23B52D520047DA1E /* APIError.swift in Sources */,
 				86692C1823B591120047DA1E /* RoverPhotoCollectionController.swift in Sources */,
+				8633F43C23B6A5E5006104B8 /* RoverPhotoDownloader.swift in Sources */,
 				86692C0223B510770047DA1E /* Rover.swift in Sources */,
 				86692C0C23B52D870047DA1E /* APIClient.swift in Sources */,
 				866DCF4323B3F6B6001AEE0F /* AppDelegate.swift in Sources */,

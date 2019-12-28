@@ -14,7 +14,7 @@ enum Rover: String {
     case spirit
     
     //Returns the cameras equiped on the specified Rover
-    func cameras() -> [Camera] {
+    var cameras: [Camera] {
         switch self {
         case .curiosity:
             return [.fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam]

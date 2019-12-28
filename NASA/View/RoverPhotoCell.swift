@@ -13,5 +13,12 @@ class RoverPhotoCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: RoverPhotoCell.self)
     
     @IBOutlet weak var roverImageView: UIImageView!
+    @IBOutlet weak var roverNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
+    
+    func configure(with roverPhoto: RoverPhoto) {
+        roverNameLabel.text = roverPhoto.rover.name + " : " + roverPhoto.camera.name + " : " + "(\(String(roverPhoto.id)))"
+        dateLabel.text = roverPhoto.earthDate
+    }
 }
