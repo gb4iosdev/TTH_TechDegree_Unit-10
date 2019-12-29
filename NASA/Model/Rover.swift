@@ -17,11 +17,23 @@ enum Rover: String {
     var cameras: [Camera] {
         switch self {
         case .curiosity:
-            return [.fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam]
+            return [.all, .fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam]
         case .opportunity:
-            return [.fhaz, .rhaz, .navcam, .pancam, .minites]
+            return [.all, .fhaz, .rhaz, .navcam, .pancam, .minites]
         case .spirit:
-            return [.fhaz, .rhaz, .navcam, .pancam, .minites]
+            return [.all, .fhaz, .rhaz, .navcam, .pancam, .minites]
+        }
+    }
+    
+    //Returns landing date for rover - used to constrain date picker
+    var landingDate: Date {
+        switch self {
+        case .curiosity:
+            return Date.fromEarthDate("2012-08-06")!
+        case .opportunity:
+            return Date.fromEarthDate("2004-01-25")!
+        case .spirit:
+            return Date.fromEarthDate("2004-01-04")!
         }
     }
 }

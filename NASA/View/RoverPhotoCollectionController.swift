@@ -24,31 +24,38 @@ class RoverPhotoCollectionController: UIViewController {
     @IBOutlet weak var roverPhotoCollectionView: UICollectionView!
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
     @IBOutlet weak var cameraPicker: UIPickerView!
-    
-    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let endpoint: NASAEndpoint = .marsRoverPhotos(rover: .curiosity, camera: .chemcam, date: Date(timeIntervalSince1970: 450000))
-        print(endpoint.request.url)
-        fetchRoverPhotos(at: endpoint)
+        datePicker.setValue(UIColor.white, forKey: "textColor")
+        datePicker.maximumDate = Date(timeIntervalSinceNow: 0.0)
+        datePicker.minimumDate = Rover.curiosity.landingDate
+        datePicker.date = Date.fromEarthDate("2015-11-05")!
+        
+        fetchRoverPhotos()
         
     }
     
     @IBAction func roverSegmentedControlSelected(_ sender: UISegmentedControl) {
         
+        //Set minimum date for date picker
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let rover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
+        datePicker.minimumDate = rover.landingDate
+        
         //Reload the cameras
         cameraPicker.reloadAllComponents()
         
-        //Reset the endpoint
-        guard let segmentedControlSelection = sender.titleForSegment(at: sender.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
-        
-        let endpoint: NASAEndpoint = .marsRoverPhotos(rover: chosenRover, camera: nil, date: Date(timeIntervalSince1970: 0.0))
-        print("Endpoint: \(endpoint.request.url)")
-        
-        fetchRoverPhotos(at: endpoint)
+        //Fetch the photos
+        fetchRoverPhotos()
     }
+    
+    @IBAction func dateSelected(_ sender: UIDatePicker) {
+        
+        fetchRoverPhotos()
+    }
+    
     
 }
 
@@ -72,7 +79,6 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollecti
 
         let roverPhoto = roverPhotos[indexPath.row]
         photoCell.configure(with: roverPhoto)
-        print("URL for image is: \(roverPhoto.imageURL.description)")
         
         if roverPhoto.imageDownloadState == .downloaded {   //If the image has already been downloaded, use that
             photoCell.roverImageView.image = roverPhoto.image
@@ -91,9 +97,8 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollecti
     
     //Delegate:
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -101,15 +106,13 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollecti
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
         return sectionInsets
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         return sectionInsets.left
     }
 }
@@ -140,9 +143,7 @@ extension RoverPhotoCollectionController: UIPickerViewDelegate, UIPickerViewData
     //Use the selected row as input for the endpoint.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
-        
-        print("Picked Rover \(segmentedControlSelection) and camera: \(chosenRover.cameras[row].description)")
+        fetchRoverPhotos()
     }
     
 }
@@ -181,18 +182,26 @@ extension RoverPhotoCollectionController {
 //MARK: - Networking
 extension RoverPhotoCollectionController {
     
-    func fetchRoverPhotos(at endpoint: Endpoint) {
+    func fetchRoverPhotos() {
+        
+        //Construct the endpoint from the UI:
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let rover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
+        
+        let camera = rover.cameras[cameraPicker.selectedRow(inComponent: 0)]
+        
+        let date = datePicker.date
+        
+        let endpoint =  NASAEndpoint.marsRoverPhotos(rover: rover, camera: camera, date: date)
+        
+        print("Endpoint is: \(endpoint.request.url)")
+        
+        //Execute the fetch
         client.fetchJSON(with: endpoint.request, toType: RoverPhotos.self) { [weak self] result in
             switch result {
             case .success(let results):
                 //Add results to dataSource:
                 let photos = results.photos as [RoverPhoto]
                 self?.roverPhotos = photos
-                print("Success")
-                print("Rover photos are:")
-                for photo in photos {
-                    print(photo.id)
-                }
                 DispatchQueue.main.async {
                     self?.roverPhotoCollectionView.reloadData()
                 }
@@ -200,5 +209,26 @@ extension RoverPhotoCollectionController {
                 print("Error is: \(String(describing: error))")
             }
         }
+    }
+}
+
+//MARK: - Segues
+extension RoverPhotoCollectionController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //check that the sender has a photo:
+        guard let photoCell = sender as? RoverPhotoCell, let photoIndex = roverPhotoCollectionView.indexPathsForSelectedItems?.first?.row, roverPhotos[photoIndex].imageDownloadState == .downloaded else {
+            print("Error:  No Photo image yet for selected Cell")
+            return
+        }
+        
+        //check that we have the right segue
+        guard segue.identifier == "PostCard", let postCardController = segue.destination as? RoverPostCardController else {
+            print("Error:  Attempted segue not registered")
+            return
+        }
+        
+        postCardController.roverImage = photoCell.roverImageView.image
+        
     }
 }

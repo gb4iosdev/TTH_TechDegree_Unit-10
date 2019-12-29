@@ -19,6 +19,7 @@ class RoverPhotoCell: UICollectionViewCell {
     
     func configure(with roverPhoto: RoverPhoto) {
         roverNameLabel.text = roverPhoto.rover.name + " : " + roverPhoto.camera.name + " : " + "(\(String(roverPhoto.id)))"
+        roverNameLabel.adjustsFontSizeToFitWidth = true
         dateLabel.text = roverPhoto.earthDate
     }
 }

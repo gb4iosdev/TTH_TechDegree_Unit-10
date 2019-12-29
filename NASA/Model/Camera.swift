@@ -9,6 +9,7 @@
 import Foundation
 
 enum Camera: String {
+    case all
     case fhaz
     case rhaz
     case mast
@@ -21,6 +22,7 @@ enum Camera: String {
     
     var description: String {
         switch self {
+        case .all:      return "All Cameras"
         case .fhaz:     return "Front Hazard Avoidance Camera"
         case .rhaz:     return "Rear Hazard Avoidance Camera"
         case .mast:     return "Mast Camera"

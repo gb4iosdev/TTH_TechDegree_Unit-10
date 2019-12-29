@@ -9,7 +9,7 @@
 import Foundation
 
 enum NASAEndpoint {
-    case marsRoverPhotos(rover: Rover, camera: Camera?, date: Date?)
+    case marsRoverPhotos(rover: Rover, camera: Camera, date: Date)
     case image(imageId: String)                    //the part returned from poster_path on the movie
 }
 
@@ -31,15 +31,15 @@ extension NASAEndpoint: Endpoint {
         switch self {
         //Main Discover query for movie fetches.
         case .marsRoverPhotos(_, let camera, let date):
-            //Add the query items if present
-            if let camera = camera {
+            //Add the query items
+            if camera != .all {     //All camera option means that the query item should be excluded altogether
                 let cameraQueryItem = URLQueryItem(name: ParameterKey.camera.rawValue, value: camera.rawValue)
                 result.append(cameraQueryItem)
             }
-            if let date = date {
-                let dateQueryItem = URLQueryItem(name: ParameterKey.date.rawValue, value: "2015-11-05") //date.asEarthDate()
-                result.append(dateQueryItem)
-            }
+            
+            let dateQueryItem = URLQueryItem(name: ParameterKey.date.rawValue, value: date.asEarthDate())
+            result.append(dateQueryItem)
+            
             result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         //Image query handled separately.
         case .image:

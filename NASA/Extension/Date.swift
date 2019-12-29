@@ -13,8 +13,14 @@ extension Date {
     
     func asEarthDate() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD"
+        dateFormatter.dateFormat = "YYYY-MM-dd"
         
         return dateFormatter.string(from: self)
+    }
+    
+    static func fromEarthDate(_ dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.date(from: dateString)
     }
 }

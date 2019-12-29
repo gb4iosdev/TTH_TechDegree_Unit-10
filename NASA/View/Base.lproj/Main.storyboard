@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="1082" width="1024" height="264"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-Cx-qFe">
-                                        <rect key="frame" x="47" y="0.0" width="930" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NCE-iJ-YpI"/>
                                         </constraints>
@@ -89,70 +89,24 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ikj-p3-ZkL" userLabel="Lower Controls Stack View">
                                         <rect key="frame" x="0.0" y="48" width="1024" height="216"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jbC-O1-32N" userLabel="ON-OFF Stack View 1">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="216"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIK-Pq-u2P">
-                                                        <rect key="frame" x="0.0" y="0.0" width="43" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                        <state key="normal" title="ON">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7c-RK-gmr">
-                                                        <rect key="frame" x="0.0" y="116" width="43" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                        <state key="normal" title="OFF">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="xCG-gq-VRA"/>
-                                                </constraints>
-                                            </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-3X-mZr">
-                                                <rect key="frame" x="47" y="0.0" width="463" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="510" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="7Z7-To-yyd" id="TwE-By-BN7"/>
                                                     <outlet property="delegate" destination="7Z7-To-yyd" id="yGE-kJ-3gX"/>
                                                 </connections>
                                             </pickerView>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
-                                                <rect key="frame" x="514" y="0.0" width="463" height="216"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
+                                                <rect key="frame" x="514" y="0.0" width="510" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="599096425.40451801">
                                                     <!--2019-12-26 23:40:25 +0000-->
                                                 </date>
+                                                <connections>
+                                                    <action selector="dateSelected:" destination="7Z7-To-yyd" eventType="valueChanged" id="kpy-AM-hE1"/>
+                                                </connections>
                                             </datePicker>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4ze-Uu-iXO" userLabel="ON-OFF Stack View 2">
-                                                <rect key="frame" x="981" y="0.0" width="43" height="216"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKB-rO-5cb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="43" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                        <state key="normal" title="ON">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21g-LC-9Ne">
-                                                        <rect key="frame" x="0.0" y="116" width="43" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                        <state key="normal" title="OFF">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="bZf-e7-ssb"/>
-                                                </constraints>
-                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="jbC-O1-32N" firstAttribute="top" secondItem="ikj-p3-ZkL" secondAttribute="top" id="T8M-KK-lju"/>
-                                            <constraint firstAttribute="bottom" secondItem="4ze-Uu-iXO" secondAttribute="bottom" id="V6q-WW-pmT"/>
-                                            <constraint firstItem="4ze-Uu-iXO" firstAttribute="top" secondItem="ikj-p3-ZkL" secondAttribute="top" id="Xsp-Ao-8Z7"/>
-                                            <constraint firstAttribute="bottom" secondItem="jbC-O1-32N" secondAttribute="bottom" id="n1e-1w-5G8"/>
                                             <constraint firstItem="sFs-3X-mZr" firstAttribute="width" secondItem="JR1-br-wAv" secondAttribute="width" id="sv6-KM-E1B"/>
                                         </constraints>
                                     </stackView>
@@ -185,7 +139,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yck-fa-2iX" userLabel="Labels Stack View">
-                                                    <rect key="frame" x="12" y="199" width="66" height="45"/>
+                                                    <rect key="frame" x="4" y="199" width="248" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-go-skG">
                                                             <rect key="frame" x="0.0" y="0.0" width="66" height="20.5"/>
@@ -205,7 +159,8 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="7Rh-1I-i6Z" firstAttribute="leading" secondItem="zB2-i1-T5n" secondAttribute="leading" id="2sj-5b-ZgC"/>
-                                            <constraint firstItem="yck-fa-2iX" firstAttribute="leading" secondItem="zB2-i1-T5n" secondAttribute="leading" constant="12" id="4vl-cr-RJl"/>
+                                            <constraint firstItem="yck-fa-2iX" firstAttribute="leading" secondItem="zB2-i1-T5n" secondAttribute="leading" constant="4" id="4vl-cr-RJl"/>
+                                            <constraint firstAttribute="trailing" secondItem="yck-fa-2iX" secondAttribute="trailing" constant="4" id="ao3-nj-ZvB"/>
                                             <constraint firstAttribute="bottom" secondItem="yck-fa-2iX" secondAttribute="bottom" constant="12" id="bEw-oP-8pC"/>
                                             <constraint firstAttribute="trailing" secondItem="7Rh-1I-i6Z" secondAttribute="trailing" id="jnD-SG-hDP"/>
                                             <constraint firstItem="7Rh-1I-i6Z" firstAttribute="top" secondItem="zB2-i1-T5n" secondAttribute="top" id="lnc-GS-hMf"/>
@@ -216,6 +171,7 @@
                                             <outlet property="dateLabel" destination="L91-w6-aSI" id="5fh-Fe-rpL"/>
                                             <outlet property="roverImageView" destination="7Rh-1I-i6Z" id="BFU-J4-fdz"/>
                                             <outlet property="roverNameLabel" destination="Mgb-go-skG" id="Cdj-3y-Cgs"/>
+                                            <segue destination="56g-oD-iU1" kind="show" identifier="PostCard" id="L56-vV-Xea"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -243,6 +199,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraPicker" destination="sFs-3X-mZr" id="C9R-qq-5aB"/>
+                        <outlet property="datePicker" destination="JR1-br-wAv" id="UAz-L5-hIh"/>
                         <outlet property="roverPhotoCollectionView" destination="Lym-wm-UVX" id="nhg-Iq-0S0"/>
                         <outlet property="roverSegmentedControl" destination="Joh-Cx-qFe" id="UQz-Ng-o7E"/>
                     </connections>
@@ -250,6 +207,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mis-3M-tgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1638.28125" y="13.616398243045387"/>
+        </scene>
+        <!--Create a Mars Rover Postcard-->
+        <scene sceneID="CWa-TE-9Oc">
+            <objects>
+                <viewController id="56g-oD-iU1" customClass="RoverPostCardController" customModule="NASA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n63-2J-9IS">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipad_background_vert_x2" translatesAutoresizingMaskIntoConstraints="NO" id="5fS-6d-tDE">
+                                <rect key="frame" x="0.0" y="74" width="1024" height="1292"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-jn-8eU" userLabel="Rover Image View">
+                                <rect key="frame" x="0.0" y="74" width="1024" height="1292"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5fS-6d-tDE" secondAttribute="trailing" id="8Jm-8Q-iTl"/>
+                            <constraint firstItem="5fS-6d-tDE" firstAttribute="leading" secondItem="n63-2J-9IS" secondAttribute="leading" id="GFm-cN-mpt"/>
+                            <constraint firstAttribute="bottom" secondItem="5fS-6d-tDE" secondAttribute="bottom" id="IfH-bO-FL9"/>
+                            <constraint firstAttribute="bottom" secondItem="YNk-jn-8eU" secondAttribute="bottom" id="WhE-Kl-LzI"/>
+                            <constraint firstItem="YNk-jn-8eU" firstAttribute="leading" secondItem="n63-2J-9IS" secondAttribute="leading" id="bUV-1t-cyQ"/>
+                            <constraint firstItem="YNk-jn-8eU" firstAttribute="top" secondItem="LAz-cu-TdK" secondAttribute="top" id="ePJ-6y-6aH"/>
+                            <constraint firstItem="5fS-6d-tDE" firstAttribute="top" secondItem="n63-2J-9IS" secondAttribute="top" constant="74" id="gGc-so-Aqn"/>
+                            <constraint firstAttribute="trailing" secondItem="YNk-jn-8eU" secondAttribute="trailing" id="kYh-M3-CQR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LAz-cu-TdK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a Mars Rover Postcard" largeTitleDisplayMode="always" id="Be3-to-SQM">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="62R-P1-2ut">
+                            <connections>
+                                <action selector="sendPressed:" destination="56g-oD-iU1" id="2fg-5u-3x9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="roverImageView" destination="YNk-jn-8eU" id="f8X-At-ThR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="au7-uj-AtV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430" y="14"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0U9-dE-J4f">
