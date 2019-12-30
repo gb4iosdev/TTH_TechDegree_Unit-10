@@ -34,6 +34,10 @@ class RoverPhotoCollectionController: UIViewController {
         datePicker.minimumDate = Rover.curiosity.landingDate
         datePicker.date = Date.fromEarthDate("2015-11-05")!
         
+        roverSegmentedControl.backgroundColor = UIColor.clear
+        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        roverSegmentedControl.setTitleTextAttributes(attributes, for: .normal)
+        
         fetchRoverPhotos()
         
     }

@@ -10,6 +10,11 @@
 		86205A6A23B8313800C47C72 /* RoverPostCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86205A6923B8313800C47C72 /* RoverPostCardController.swift */; };
 		8633F43C23B6A5E5006104B8 /* RoverPhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */; };
 		8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43D23B6DF55006104B8 /* PendingOperations.swift */; };
+		865D41F423B8DE670017BD3F /* PostCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F323B8DE670017BD3F /* PostCardTextView.swift */; };
+		865D41F623B924B20017BD3F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F523B924B20017BD3F /* MapController.swift */; };
+		865D41FA23B926160017BD3F /* EarthImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F923B926160017BD3F /* EarthImage.swift */; };
+		865D41FD23B9296E0017BD3F /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41FC23B9296E0017BD3F /* MKMapView.swift */; };
+		865D41FF23B971580017BD3F /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41FE23B971580017BD3F /* Double.swift */; };
 		86692BFE23B50D360047DA1E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692BFD23B50D360047DA1E /* Endpoint.swift */; };
 		86692C0023B50EFB0047DA1E /* ParameterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692BFF23B50EFB0047DA1E /* ParameterKey.swift */; };
 		86692C0223B510770047DA1E /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C0123B510770047DA1E /* Rover.swift */; };
@@ -36,6 +41,11 @@
 		86205A6923B8313800C47C72 /* RoverPostCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPostCardController.swift; sourceTree = "<group>"; };
 		8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoDownloader.swift; sourceTree = "<group>"; };
 		8633F43D23B6DF55006104B8 /* PendingOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
+		865D41F323B8DE670017BD3F /* PostCardTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardTextView.swift; sourceTree = "<group>"; };
+		865D41F523B924B20017BD3F /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapController.swift; path = NASA/View/MapController.swift; sourceTree = SOURCE_ROOT; };
+		865D41F923B926160017BD3F /* EarthImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthImage.swift; sourceTree = "<group>"; };
+		865D41FC23B9296E0017BD3F /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
+		865D41FE23B971580017BD3F /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		86692BFD23B50D360047DA1E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		86692BFF23B50EFB0047DA1E /* ParameterKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterKey.swift; sourceTree = "<group>"; };
 		86692C0123B510770047DA1E /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
@@ -71,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		865D41FB23B926C40017BD3F /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				86692BFD23B50D360047DA1E /* Endpoint.swift */,
+				8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */,
+				8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */,
+				86692BFF23B50EFB0047DA1E /* ParameterKey.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
 		86692BFA23B50CC70047DA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +99,7 @@
 				86692C0323B515700047DA1E /* Camera.swift */,
 				86692C0D23B52E630047DA1E /* RoverPhoto.swift */,
 				86692C1123B5313A0047DA1E /* RoverPhotos.swift */,
+				865D41F923B926160017BD3F /* EarthImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +110,7 @@
 				866DCF4423B3F6B6001AEE0F /* ViewController.swift */,
 				86692C1723B591120047DA1E /* RoverPhotoCollectionController.swift */,
 				86205A6923B8313800C47C72 /* RoverPostCardController.swift */,
+				865D41F523B924B20017BD3F /* MapController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,6 +122,7 @@
 				86692C1923B593080047DA1E /* RoverPhotoCell.swift */,
 				866DCF4923B3F6B7001AEE0F /* Assets.xcassets */,
 				866DCF4B23B3F6B7001AEE0F /* LaunchScreen.storyboard */,
+				865D41F323B8DE670017BD3F /* PostCardTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -107,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				86692C0623B526EE0047DA1E /* Date.swift */,
+				865D41FC23B9296E0017BD3F /* MKMapView.swift */,
+				865D41FE23B971580017BD3F /* Double.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -114,8 +140,6 @@
 		86692C0823B52D2C0047DA1E /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				86692BFD23B50D360047DA1E /* Endpoint.swift */,
-				8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */,
 				86692C0923B52D520047DA1E /* APIError.swift */,
 			);
 			path = Error;
@@ -156,11 +180,10 @@
 			children = (
 				86692C0B23B52D870047DA1E /* APIClient.swift */,
 				86692C1323B534460047DA1E /* NASAAPIClient.swift */,
-				8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */,
-				86692BFF23B50EFB0047DA1E /* ParameterKey.swift */,
 				86692C0F23B52FDD0047DA1E /* ImageDownloadState.swift */,
 				8633F43B23B6A5E5006104B8 /* RoverPhotoDownloader.swift */,
 				8633F43D23B6DF55006104B8 /* PendingOperations.swift */,
+				865D41FB23B926C40017BD3F /* Endpoint */,
 				86692C0823B52D2C0047DA1E /* Error */,
 			);
 			path = Network;
@@ -240,19 +263,24 @@
 				86692C1023B52FDD0047DA1E /* ImageDownloadState.swift in Sources */,
 				86692C0423B515700047DA1E /* Camera.swift in Sources */,
 				8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */,
+				865D41FD23B9296E0017BD3F /* MKMapView.swift in Sources */,
 				866DCF4523B3F6B6001AEE0F /* ViewController.swift in Sources */,
 				86692C1423B534460047DA1E /* NASAAPIClient.swift in Sources */,
 				8679FCCF23B3FA5800AC7AD3 /* EndpointExamples.swift in Sources */,
 				86692C0E23B52E630047DA1E /* RoverPhoto.swift in Sources */,
+				865D41FF23B971580017BD3F /* Double.swift in Sources */,
 				86692C0A23B52D520047DA1E /* APIError.swift in Sources */,
 				86692C1823B591120047DA1E /* RoverPhotoCollectionController.swift in Sources */,
 				8633F43C23B6A5E5006104B8 /* RoverPhotoDownloader.swift in Sources */,
 				86205A6A23B8313800C47C72 /* RoverPostCardController.swift in Sources */,
 				86692C0223B510770047DA1E /* Rover.swift in Sources */,
 				86692C0C23B52D870047DA1E /* APIClient.swift in Sources */,
+				865D41FA23B926160017BD3F /* EarthImage.swift in Sources */,
 				866DCF4323B3F6B6001AEE0F /* AppDelegate.swift in Sources */,
+				865D41F623B924B20017BD3F /* MapController.swift in Sources */,
 				8679FCCD23B3FA0500AC7AD3 /* NASAEndpoint.swift in Sources */,
 				86692C1A23B593080047DA1E /* RoverPhotoCell.swift in Sources */,
+				865D41F423B8DE670017BD3F /* PostCardTextView.swift in Sources */,
 				86692BFE23B50D360047DA1E /* Endpoint.swift in Sources */,
 				86692C1223B5313A0047DA1E /* RoverPhotos.swift in Sources */,
 				86692C0723B526EE0047DA1E /* Date.swift in Sources */,

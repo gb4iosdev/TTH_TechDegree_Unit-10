@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qpp-h0-eSD">
-    <device id="ipad12_9rounded" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qpp-h0-eSD">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4iW-fM-DFi" userLabel="Main Stack View">
-                                <rect key="frame" x="0.0" y="74" width="1024" height="1292"/>
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qf-1S-2N8">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="646"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="658"/>
                                         <color key="backgroundColor" red="0.56416560910000002" green="0.2482126039" blue="0.2376470826" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Mars Rover Postcard Maker">
@@ -33,12 +31,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-oU-3xZ">
-                                        <rect key="frame" x="0.0" y="646" width="1024" height="646"/>
+                                        <rect key="frame" x="0.0" y="658" width="1024" height="658"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Eye in the Sky">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="DfR-HB-9m9" kind="show" id="3E9-1c-Ujc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -58,6 +59,72 @@
             </objects>
             <point key="canvasLocation" x="823.2421875" y="13.616398243045387"/>
         </scene>
+        <!--Map Controller-->
+        <scene sceneID="ieo-d8-Lqh">
+            <objects>
+                <viewController id="DfR-HB-9m9" customClass="MapController" customModule="NASA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ur1-jc-hb5">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vPG-uG-yA5">
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1236"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-CO-XMh">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="618"/>
+                                    </mapView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2xA-Nu-QZ9">
+                                        <rect key="frame" x="0.0" y="618" width="1024" height="618"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2xA-Nu-QZ9" firstAttribute="height" secondItem="gtP-CO-XMh" secondAttribute="height" id="55R-bl-Zzz"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="azw-9Y-h12" userLabel="ImageData Stack View">
+                                <rect key="frame" x="12" y="1286" width="1000" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Image Data: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKH-Yv-s6g">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odq-vN-4n8">
+                                        <rect key="frame" x="142" y="0.0" width="858" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="S0s-C8-SOk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vPG-uG-yA5" firstAttribute="top" secondItem="daX-qv-DPe" secondAttribute="top" id="L6i-Vr-8NQ"/>
+                            <constraint firstItem="daX-qv-DPe" firstAttribute="trailing" secondItem="azw-9Y-h12" secondAttribute="trailing" constant="12" id="PSg-Ww-oKm"/>
+                            <constraint firstItem="daX-qv-DPe" firstAttribute="bottom" secondItem="azw-9Y-h12" secondAttribute="bottom" id="QGL-f3-65T"/>
+                            <constraint firstItem="azw-9Y-h12" firstAttribute="top" secondItem="vPG-uG-yA5" secondAttribute="bottom" id="VbE-nt-iUZ"/>
+                            <constraint firstItem="daX-qv-DPe" firstAttribute="trailing" secondItem="vPG-uG-yA5" secondAttribute="trailing" id="W6V-E1-1B3"/>
+                            <constraint firstItem="vPG-uG-yA5" firstAttribute="leading" secondItem="daX-qv-DPe" secondAttribute="leading" id="fTl-Ga-h3u"/>
+                            <constraint firstItem="azw-9Y-h12" firstAttribute="leading" secondItem="daX-qv-DPe" secondAttribute="leading" constant="12" id="pZn-Y1-xgp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="daX-qv-DPe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H5L-mN-ZOx"/>
+                    <connections>
+                        <outlet property="imageDataLabel" destination="Odq-vN-4n8" id="a4P-Jb-oXu"/>
+                        <outlet property="imageView" destination="2xA-Nu-QZ9" id="E7S-uK-bS8"/>
+                        <outlet property="mapView" destination="gtP-CO-XMh" id="wUQ-0F-YXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0h-SC-Ni2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1499" y="14"/>
+        </scene>
         <!--Rover Photo Collection Controller-->
         <scene sceneID="g5R-Bx-cUR">
             <objects>
@@ -74,6 +141,7 @@
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-Cx-qFe">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="41"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NCE-iJ-YpI"/>
                                         </constraints>
@@ -82,6 +150,8 @@
                                             <segment title="Opportunity"/>
                                             <segment title="Spirit"/>
                                         </segments>
+                                        <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="selectedSegmentTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="roverSegmentedControlSelected:" destination="7Z7-To-yyd" eventType="valueChanged" id="b0Y-bY-oLd"/>
                                         </connections>
@@ -96,11 +166,8 @@
                                                     <outlet property="delegate" destination="7Z7-To-yyd" id="yGE-kJ-3gX"/>
                                                 </connections>
                                             </pickerView>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
                                                 <rect key="frame" x="514" y="0.0" width="510" height="216"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="599096425.40451801">
-                                                    <!--2019-12-26 23:40:25 +0000-->
-                                                </date>
                                                 <connections>
                                                     <action selector="dateSelected:" destination="7Z7-To-yyd" eventType="valueChanged" id="kpy-AM-hE1"/>
                                                 </connections>
@@ -119,7 +186,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-wm-UVX">
-                                <rect key="frame" x="0.0" y="74" width="1024" height="1000"/>
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zao-Jq-cBM">
                                     <size key="itemSize" width="50" height="50"/>
@@ -206,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mis-3M-tgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638.28125" y="13.616398243045387"/>
+            <point key="canvasLocation" x="1499" y="-692"/>
         </scene>
         <!--Create a Mars Rover Postcard-->
         <scene sceneID="CWa-TE-9Oc">
@@ -220,15 +287,36 @@
                                 <rect key="frame" x="0.0" y="74" width="1024" height="1292"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-jn-8eU" userLabel="Rover Image View">
-                                <rect key="frame" x="0.0" y="74" width="1024" height="1292"/>
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHn-xf-enj" customClass="PostCardTextView" customModule="NASA" customModuleProvider="target">
+                                <rect key="frame" x="302" y="633" width="420" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Eck-dC-iMk"/>
+                                    <constraint firstAttribute="width" constant="420" id="xM2-UN-U4N"/>
+                                </constraints>
+                                <string key="text">Enter postcard text here.
+Drag to move
+Long press to change text to black/white</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="EP0-K8-9QR" appends="YES" id="q7o-VQ-zIi"/>
+                                    <outletCollection property="gestureRecognizers" destination="7Pq-9l-O3d" appends="YES" id="XUh-Y7-qVD"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5fS-6d-tDE" secondAttribute="trailing" id="8Jm-8Q-iTl"/>
+                            <constraint firstItem="UHn-xf-enj" firstAttribute="centerX" secondItem="n63-2J-9IS" secondAttribute="centerX" id="93d-jP-DMu"/>
                             <constraint firstItem="5fS-6d-tDE" firstAttribute="leading" secondItem="n63-2J-9IS" secondAttribute="leading" id="GFm-cN-mpt"/>
                             <constraint firstAttribute="bottom" secondItem="5fS-6d-tDE" secondAttribute="bottom" id="IfH-bO-FL9"/>
                             <constraint firstAttribute="bottom" secondItem="YNk-jn-8eU" secondAttribute="bottom" id="WhE-Kl-LzI"/>
                             <constraint firstItem="YNk-jn-8eU" firstAttribute="leading" secondItem="n63-2J-9IS" secondAttribute="leading" id="bUV-1t-cyQ"/>
+                            <constraint firstItem="UHn-xf-enj" firstAttribute="centerY" secondItem="n63-2J-9IS" secondAttribute="centerY" id="cno-1A-ucD"/>
                             <constraint firstItem="YNk-jn-8eU" firstAttribute="top" secondItem="LAz-cu-TdK" secondAttribute="top" id="ePJ-6y-6aH"/>
                             <constraint firstItem="5fS-6d-tDE" firstAttribute="top" secondItem="n63-2J-9IS" secondAttribute="top" constant="74" id="gGc-so-Aqn"/>
                             <constraint firstAttribute="trailing" secondItem="YNk-jn-8eU" secondAttribute="trailing" id="kYh-M3-CQR"/>
@@ -244,11 +332,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="roverImageView" destination="YNk-jn-8eU" id="f8X-At-ThR"/>
+                        <outlet property="textView" destination="UHn-xf-enj" id="tQP-4e-NPn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au7-uj-AtV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="EP0-K8-9QR">
+                    <connections>
+                        <action selector="textViewPanning:" destination="56g-oD-iU1" id="r8s-oz-qe7"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="7Pq-9l-O3d">
+                    <connections>
+                        <action selector="textViewLongPressed:" destination="56g-oD-iU1" id="O0H-OX-isZ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2430" y="14"/>
+            <point key="canvasLocation" x="2239" y="-692"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0U9-dE-J4f">
@@ -256,7 +355,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qpp-h0-eSD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFi-pC-ckS">
-                        <rect key="frame" x="0.0" y="24" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

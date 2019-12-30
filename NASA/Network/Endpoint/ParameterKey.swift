@@ -10,8 +10,13 @@ import Foundation
 
 //List of parameter keys that can be used in this application, and their query string representations.
 enum ParameterKey: String {
-    case date = "earth_date"
+    //For Rover Photos
+    case earthDate = "earth_date"
     case camera
     case apiKey = "api_key"
     case page
+    //For Earth Imagery
+    case longitude = "lon"
+    case latitude = "lat"
+    case cloudScore = "cloud_score"
 }

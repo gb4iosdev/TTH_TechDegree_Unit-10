@@ -6,11 +6,12 @@
 //  Copyright © 2019 Gavin Butler. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum NASAEndpoint {
     case marsRoverPhotos(rover: Rover, camera: Camera, date: Date)
-    case image(imageId: String)                    //the part returned from poster_path on the movie
+    case earthImage(latitude: Double, longitude: Double)
+    case image(urlString: String)                    //provided as a full URL String
 }
 
 //conforms to the Endpoint protocol to assist with URL creation.
@@ -19,6 +20,8 @@ extension NASAEndpoint: Endpoint {
         switch self {
         case .marsRoverPhotos(let rover, _, _):
             return "/mars-photos/api/v1/rovers/" + rover.rawValue + "/photos"
+        case .earthImage:
+            return "/planetary/earth/imagery/"
         case .image: return ""
         }
     }
@@ -37,9 +40,17 @@ extension NASAEndpoint: Endpoint {
                 result.append(cameraQueryItem)
             }
             
-            let dateQueryItem = URLQueryItem(name: ParameterKey.date.rawValue, value: date.asEarthDate())
+            let dateQueryItem = URLQueryItem(name: ParameterKey.earthDate.rawValue, value: date.asEarthDate())
             result.append(dateQueryItem)
             
+            result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
+        case .earthImage(let latitude, let longitude):
+            let latitudeQueryItem = URLQueryItem(name: ParameterKey.latitude.rawValue, value: String(Float(latitude)))
+            result.append(latitudeQueryItem)
+            let longitudeQueryItem = URLQueryItem(name: ParameterKey.longitude.rawValue, value: String(Float(longitude)))
+            result.append(longitudeQueryItem)
+            let cloudScoreQueryItem = URLQueryItem(name: ParameterKey.cloudScore.rawValue, value: "true")
+            result.append(cloudScoreQueryItem)
             result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         //Image query handled separately.
         case .image:
@@ -59,10 +70,9 @@ extension NASAEndpoint: Endpoint {
     //Image request handled separately to bypass QueryParameters creation.  No parameters required for this endpoint.
     func requestForImage() -> URLRequest? {
         switch self {
-        case .image(let imageId):
-            var components = URLComponents(string: base)!
-            components.path = path + imageId
-            return URLRequest(url: components.url!)
+        case .image(let urlString):
+            let url = URL(string: urlString)!
+            return URLRequest(url: url)
         default:    return nil
         }
     }
