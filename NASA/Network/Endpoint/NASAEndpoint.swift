@@ -11,6 +11,7 @@ import UIKit
 enum NASAEndpoint {
     case marsRoverPhotos(rover: Rover, camera: Camera, date: Date)
     case earthImage(latitude: Double, longitude: Double)
+    case astronomyImage(date: Date?)
     case image(urlString: String)                    //provided as a full URL String
 }
 
@@ -22,6 +23,8 @@ extension NASAEndpoint: Endpoint {
             return "/mars-photos/api/v1/rovers/" + rover.rawValue + "/photos"
         case .earthImage:
             return "/planetary/earth/imagery/"
+        case .astronomyImage:
+            return "/planetary/apod"
         case .image: return ""
         }
     }
@@ -39,11 +42,8 @@ extension NASAEndpoint: Endpoint {
                 let cameraQueryItem = URLQueryItem(name: ParameterKey.camera.rawValue, value: camera.rawValue)
                 result.append(cameraQueryItem)
             }
-            
             let dateQueryItem = URLQueryItem(name: ParameterKey.earthDate.rawValue, value: date.asEarthDate())
             result.append(dateQueryItem)
-            
-            result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         case .earthImage(let latitude, let longitude):
             let latitudeQueryItem = URLQueryItem(name: ParameterKey.latitude.rawValue, value: String(Float(latitude)))
             result.append(latitudeQueryItem)
@@ -51,12 +51,17 @@ extension NASAEndpoint: Endpoint {
             result.append(longitudeQueryItem)
             let cloudScoreQueryItem = URLQueryItem(name: ParameterKey.cloudScore.rawValue, value: "true")
             result.append(cloudScoreQueryItem)
-            result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
+        case .astronomyImage(let date):
+            if let photoDate = date {
+                let dateQueryItem = URLQueryItem(name: ParameterKey.date.rawValue, value: photoDate.asEarthDate())
+                result.append(dateQueryItem)
+            }
+        
         //Image query handled separately.
         case .image:
             break
         }
-        
+        result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         return result
     }
     

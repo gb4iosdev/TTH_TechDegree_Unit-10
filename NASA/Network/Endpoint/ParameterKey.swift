@@ -19,4 +19,6 @@ enum ParameterKey: String {
     case longitude = "lon"
     case latitude = "lat"
     case cloudScore = "cloud_score"
+    //For Astronomy Imagery
+    case date
 }

@@ -17,26 +17,24 @@ extension MKMapView {
         self.setRegion(region, animated: true)
     }
     
-    //Centre the map around a coordinate, set it's span and draw the monitoring region circle
+    //Centre the map around a coordinate, set it's span
     func adjust(centreTo centre: CLLocationCoordinate2D, span: Double) {
-        
         self.setRegion(around: centre, withSpan: span)
     }
     
-    //Circle visual characteristics
-    func renderer(for overlay: MKOverlay) -> MKOverlayRenderer {
-        if let circleOverlay = overlay as? MKCircle {
-            let circleRenderer = MKCircleRenderer(overlay: circleOverlay)
-            circleRenderer.fillColor = .cyan
-            circleRenderer.strokeColor = .black
-            circleRenderer.lineWidth = 2.0
-            circleRenderer.alpha = 0.3
-            return circleRenderer
-        } else {
-            return MKOverlayRenderer()
-        }
+    func addAnnotation(at location: CLLocationCoordinate2D, title: String?, subTitle: String?) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = title
+        annotation.subtitle = subTitle
+        self.addAnnotation(annotation)
+        self.selectAnnotation(annotation, animated: true)
     }
-
+    
+    func removeAllAnnotations() {
+        let allAnnotations = self.annotations
+        self.removeAnnotations(allAnnotations)
+    }
 }
 
 

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qf-1S-2N8">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="658"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
                                         <color key="backgroundColor" red="0.56416560910000002" green="0.2482126039" blue="0.2376470826" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Mars Rover Postcard Maker">
@@ -31,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-oU-3xZ">
-                                        <rect key="frame" x="0.0" y="658" width="1024" height="658"/>
+                                        <rect key="frame" x="0.0" y="438.5" width="1024" height="439"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Eye in the Sky">
@@ -39,6 +40,17 @@
                                         </state>
                                         <connections>
                                             <segue destination="DfR-HB-9m9" kind="show" id="3E9-1c-Ujc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pC-bY-03p" userLabel="Astronomy Picture">
+                                        <rect key="frame" x="0.0" y="877.5" width="1024" height="438.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <state key="normal" title="Astronomy Photos">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="zR9-QW-UGZ" kind="show" identifier="AstronomyPhoto" id="lKM-QF-9Fb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -124,6 +136,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0h-SC-Ni2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1499" y="14"/>
+        </scene>
+        <!--Astronomy Photo Collection Controller-->
+        <scene sceneID="cz8-im-Jas">
+            <objects>
+                <viewController id="zR9-QW-UGZ" customClass="AstronomyPhotoCollectionController" customModule="NASA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YH3-oT-1wh">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipad_background_vert_x2" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-bE-yBt">
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bga-c7-4Dv" userLabel="Main Stack View">
+                                <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xBG-6H-hrp">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="581.5"/>
+                                    </imageView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ih6-Ar-l7o">
+                                        <rect key="frame" x="0.0" y="589.5" width="1024" height="726.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FC9-B2-1cl">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lx0-Ki-sTT">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="frZ-Ud-8Yg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ih6-Ar-l7o" firstAttribute="height" secondItem="xBG-6H-hrp" secondAttribute="height" multiplier="1.25" id="l38-d6-haU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bga-c7-4Dv" secondAttribute="bottom" id="2Za-9a-Kh2"/>
+                            <constraint firstItem="7gZ-bE-yBt" firstAttribute="top" secondItem="oXz-Ss-E3g" secondAttribute="top" id="GIu-Bi-2JY"/>
+                            <constraint firstAttribute="bottom" secondItem="7gZ-bE-yBt" secondAttribute="bottom" id="Ju4-2i-Hp9"/>
+                            <constraint firstItem="bga-c7-4Dv" firstAttribute="top" secondItem="oXz-Ss-E3g" secondAttribute="top" id="TxL-ee-J46"/>
+                            <constraint firstItem="7gZ-bE-yBt" firstAttribute="leading" secondItem="YH3-oT-1wh" secondAttribute="leading" id="ggH-tb-gsg"/>
+                            <constraint firstItem="bga-c7-4Dv" firstAttribute="leading" secondItem="YH3-oT-1wh" secondAttribute="leading" id="iGH-Wk-l2A"/>
+                            <constraint firstAttribute="trailing" secondItem="7gZ-bE-yBt" secondAttribute="trailing" id="qa9-N5-1de"/>
+                            <constraint firstAttribute="trailing" secondItem="bga-c7-4Dv" secondAttribute="trailing" id="stF-DF-fgK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oXz-Ss-E3g"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="thy-fq-byL"/>
+                    <connections>
+                        <outlet property="imageView" destination="xBG-6H-hrp" id="M1R-05-CRA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Xv-a8-CiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498.828125" y="727.81844802342596"/>
         </scene>
         <!--Rover Photo Collection Controller-->
         <scene sceneID="g5R-Bx-cUR">
