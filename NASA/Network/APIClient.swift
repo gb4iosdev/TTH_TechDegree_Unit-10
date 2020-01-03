@@ -29,6 +29,7 @@ extension APIClient {
                         let entity = try self.decoder.decode(type, from: data)
                         completion(Result.success(entity))
                     } catch {
+                        print(error.localizedDescription)
                         completion(Result.failure(.jsonParsingFailure)) //Successful http status code, have data but can’t parse to the model.
                     }
                 } else {

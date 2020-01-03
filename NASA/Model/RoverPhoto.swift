@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Foundation
 
-class RoverPhoto: Codable {
+class RoverPhoto: Codable, RapidDownloadable {
+    
     let id: Int
     let camera: Camera
     let earthDate: String

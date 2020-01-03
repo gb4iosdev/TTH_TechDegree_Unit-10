@@ -163,8 +163,8 @@ extension RoverPhotoCollectionController {
             return
         }
         
-        //Otherwise instantiate a RoverPhotoDownloader operation, set it’s completion handler, register the operation in the tracker dictionary (downloadsInProgress), and add it to the queue for execution.
-        let downloader = RoverPhotoDownloader(roverPhoto: roverPhoto)
+        //Otherwise instantiate a PhotoDownloader operation, set it’s completion handler, register the operation in the tracker dictionary (downloadsInProgress), and add it to the queue for execution.
+        let downloader = PhotoDownloader(photo: roverPhoto)
         
         downloader.completionBlock = {
             if downloader.isCancelled {

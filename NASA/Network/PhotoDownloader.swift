@@ -8,13 +8,13 @@
 
 import UIKit
 
-class RoverPhotoDownloader: Operation {
+class PhotoDownloader: Operation {
     //Download Rover image and assign it back to the Rover Photo instance
     
-    let roverPhoto: RoverPhoto
+    var photo: RapidDownloadable
     
-    init(roverPhoto: RoverPhoto) {
-        self.roverPhoto = roverPhoto
+    init(photo: RapidDownloadable) {
+        self.photo = photo
         super.init()
     }
     
@@ -26,7 +26,7 @@ class RoverPhotoDownloader: Operation {
         }
         
         //Download artwork associated with the rover photo.
-        let url = roverPhoto.imageURL
+        let url = photo.imageURL
         
         guard let imageData = try? Data(contentsOf: url) else { return }
         
@@ -35,10 +35,10 @@ class RoverPhotoDownloader: Operation {
         }
         
         if imageData.count > 0 {    ///Assume data is valid
-            roverPhoto.image = UIImage(data: imageData)
-            roverPhoto.imageDownloadState = .downloaded
+            photo.image = UIImage(data: imageData)
+            photo.imageDownloadState = .downloaded
         } else {
-            roverPhoto.imageDownloadState = .failed
+            photo.imageDownloadState = .failed
         }
     }
 }
