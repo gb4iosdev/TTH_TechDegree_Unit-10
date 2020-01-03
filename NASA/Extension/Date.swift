@@ -19,7 +19,7 @@ extension Date {
     
     static func fromEarthDate(_ dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: dateString)
     }
 }

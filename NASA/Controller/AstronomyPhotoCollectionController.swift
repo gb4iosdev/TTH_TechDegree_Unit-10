@@ -15,7 +15,7 @@ class AstronomyPhotoCollectionController: UIViewController {
     var photoDates: [Date] = []
     let pendingOperations = PendingOperations()
     
-    let numberOfPhotos = 20
+    let numberOfPhotos = 30
     
     //Collection View variables & constants:
     let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -93,7 +93,9 @@ extension AstronomyPhotoCollectionController: UICollectionViewDataSource, UIColl
         print("Selected: \(astronomyPhotos[indexPath.row].title)")
         let chosenPhoto = astronomyPhotos[indexPath.row]
         featurePhotoTitleLabel.text = chosenPhoto.title
+        featurePhotoTitleLabel.isHidden = false
         featurePhotoDetailLabel.text = chosenPhoto.date
+        featurePhotoDetailLabel.isHidden = false
         if let hdURL = chosenPhoto.hdurl {
             fetchHDAstronomyImage(at: hdURL)
         } else if let standardResImage = chosenPhoto.image {
