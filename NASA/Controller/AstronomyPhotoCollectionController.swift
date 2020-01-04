@@ -171,6 +171,10 @@ extension AstronomyPhotoCollectionController {
                 }
                 //Refresh Collection View if they're all done:
                 if fetchCount == self?.numberOfPhotos {
+                    self?.astronomyPhotos.sort {
+                        Date.fromEarthDate($0.date)! > Date.fromEarthDate($1.date)!
+                    }
+
                     DispatchQueue.main.async {
                         print("Got to here")
                         self?.astronomyPhotoCollectionView.reloadData()

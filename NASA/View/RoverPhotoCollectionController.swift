@@ -12,11 +12,13 @@ import UIKit
 
 class RoverPhotoCollectionController: UIViewController {
 
+    //Networking variables
     let client = NASAAPIClient()
-    var roverPhotos: [RoverPhoto] = []
     let pendingOperations = PendingOperations()
+    var pendingFetchURL: URL?
     
     //Collection View variables & constants:
+    var roverPhotos: [RoverPhoto] = []
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let itemsPerRow: CGFloat = 3
     
@@ -199,15 +201,21 @@ extension RoverPhotoCollectionController {
         
         print("Endpoint is: \(endpoint.request.url)")
         
+        //Save this as the current pending Fetch:
+        self.pendingFetchURL = endpoint.request.url
+        
         //Execute the fetch
         client.fetchJSON(with: endpoint.request, toType: RoverPhotos.self) { [weak self] result in
             switch result {
             case .success(let results):
                 //Add results to dataSource:
                 let photos = results.photos as [RoverPhoto]
-                self?.roverPhotos = photos
-                DispatchQueue.main.async {
-                    self?.roverPhotoCollectionView.reloadData()
+                
+                if endpoint.request.url == self?.pendingFetchURL {             //Otherwise do nothing as the UI has changed and prompted another fetch
+                    self?.roverPhotos = photos
+                    DispatchQueue.main.async {
+                        self?.roverPhotoCollectionView.reloadData()
+                    }
                 }
             case .failure(let error):
                 print("Error is: \(String(describing: error))")

@@ -20,39 +20,63 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4iW-fM-DFi" userLabel="Main Stack View">
                                 <rect key="frame" x="0.0" y="50" width="1024" height="1316"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qf-1S-2N8">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LI-6W-xXZ" userLabel="MarsRoverView">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
-                                        <color key="backgroundColor" red="0.56416560910000002" green="0.2482126039" blue="0.2376470826" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Mars Rover Postcard Maker">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rover" translatesAutoresizingMaskIntoConstraints="NO" id="u7T-9Z-lz5">
+                                                <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="u7T-9Z-lz5" secondAttribute="bottom" id="UUn-8h-rvb"/>
+                                            <constraint firstAttribute="trailing" secondItem="u7T-9Z-lz5" secondAttribute="trailing" id="dli-pm-tLy"/>
+                                            <constraint firstItem="u7T-9Z-lz5" firstAttribute="top" secondItem="3LI-6W-xXZ" secondAttribute="top" id="eck-L8-P0c"/>
+                                            <constraint firstItem="u7T-9Z-lz5" firstAttribute="leading" secondItem="3LI-6W-xXZ" secondAttribute="leading" id="heF-aj-v5y"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="7Z7-To-yyd" kind="show" identifier="RoverPhotos" id="spQ-rQ-oIG"/>
+                                            <outletCollection property="gestureRecognizers" destination="Kbc-LN-gLF" appends="YES" id="jQ1-gq-VN0"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-oU-3xZ">
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcZ-Gm-Jh1" userLabel="EyeInSky View">
                                         <rect key="frame" x="0.0" y="438.5" width="1024" height="439"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Eye in the Sky">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyeInSky" translatesAutoresizingMaskIntoConstraints="NO" id="WIZ-No-ISk">
+                                                <rect key="frame" x="0.0" y="0.0" width="1024" height="439"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WIZ-No-ISk" secondAttribute="trailing" id="HaI-T6-6sh"/>
+                                            <constraint firstItem="WIZ-No-ISk" firstAttribute="leading" secondItem="WcZ-Gm-Jh1" secondAttribute="leading" id="Qhd-pn-COe"/>
+                                            <constraint firstAttribute="bottom" secondItem="WIZ-No-ISk" secondAttribute="bottom" id="aDu-eJ-8XC"/>
+                                            <constraint firstItem="WIZ-No-ISk" firstAttribute="top" secondItem="WcZ-Gm-Jh1" secondAttribute="top" id="j8b-WI-zJc"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="DfR-HB-9m9" kind="show" id="3E9-1c-Ujc"/>
+                                            <outletCollection property="gestureRecognizers" destination="YsQ-SX-SEI" appends="YES" id="ZQH-4A-xJS"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pC-bY-03p" userLabel="Astronomy Picture">
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H46-Nd-oAt" userLabel="Astronomy View">
                                         <rect key="frame" x="0.0" y="877.5" width="1024" height="438.5"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Astronomy Photos">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronomy" translatesAutoresizingMaskIntoConstraints="NO" id="e4E-eA-lkV">
+                                                <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="e4E-eA-lkV" firstAttribute="leading" secondItem="H46-Nd-oAt" secondAttribute="leading" id="Fbs-8C-XvX"/>
+                                            <constraint firstItem="e4E-eA-lkV" firstAttribute="top" secondItem="H46-Nd-oAt" secondAttribute="top" id="anc-1W-1tJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="e4E-eA-lkV" secondAttribute="bottom" id="e2V-lu-Tcq"/>
+                                            <constraint firstAttribute="trailing" secondItem="e4E-eA-lkV" secondAttribute="trailing" id="sng-5o-GpA"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="zR9-QW-UGZ" kind="show" identifier="AstronomyPhoto" id="lKM-QF-9Fb"/>
+                                            <outletCollection property="gestureRecognizers" destination="3On-XO-SFY" appends="YES" id="DsH-Jj-Mxb"/>
                                         </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -68,6 +92,21 @@
                     <navigationItem key="navigationItem" id="zwv-XS-tqn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kbc-LN-gLF" userLabel="Mars Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="7Z7-To-yyd" kind="show" identifier="RoverPhotos" id="gf4-eA-9yn"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YsQ-SX-SEI" userLabel="Eye Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="DfR-HB-9m9" kind="show" id="UUS-Wx-Pv7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3On-XO-SFY" userLabel="Astronomy Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="zR9-QW-UGZ" kind="show" id="7zv-o9-leh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="823.2421875" y="13.616398243045387"/>
         </scene>
@@ -406,6 +445,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vEm-UE-Tbb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DC5-aS-8yA"/>
                     <connections>
                         <outlet property="cameraPicker" destination="sFs-3X-mZr" id="C9R-qq-5aB"/>
                         <outlet property="datePicker" destination="JR1-br-wAv" id="UAz-L5-hIh"/>
@@ -499,6 +539,8 @@ Long press to change text to black/white</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFi-pC-ckS">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -511,7 +553,10 @@ Long press to change text to black/white</string>
         </scene>
     </scenes>
     <resources>
+        <image name="astronomy" width="430" height="230"/>
         <image name="blank" width="256" height="256"/>
+        <image name="eyeInSky" width="520.5" height="520.5"/>
         <image name="ipad_background_vert_x2" width="1024" height="1366"/>
+        <image name="rover" width="580" height="387"/>
     </resources>
 </document>
