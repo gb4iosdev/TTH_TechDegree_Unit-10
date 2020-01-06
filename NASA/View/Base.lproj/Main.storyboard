@@ -27,13 +27,32 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
                                                 <gestureRecognizers/>
                                             </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Z5-yQ-EMx" userLabel="Rover Labels Stack View">
+                                                <rect key="frame" x="24" y="181" width="227" height="77"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARS ROVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVZ-eh-1Gz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="227" height="41"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POSTCARD MAKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40n-Kg-VXG">
+                                                        <rect key="frame" x="0.0" y="49" width="220" height="28"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="7Z5-yQ-EMx" firstAttribute="leading" secondItem="3LI-6W-xXZ" secondAttribute="leading" constant="24" id="Qim-wB-rHy"/>
                                             <constraint firstAttribute="bottom" secondItem="u7T-9Z-lz5" secondAttribute="bottom" id="UUn-8h-rvb"/>
                                             <constraint firstAttribute="trailing" secondItem="u7T-9Z-lz5" secondAttribute="trailing" id="dli-pm-tLy"/>
                                             <constraint firstItem="u7T-9Z-lz5" firstAttribute="top" secondItem="3LI-6W-xXZ" secondAttribute="top" id="eck-L8-P0c"/>
                                             <constraint firstItem="u7T-9Z-lz5" firstAttribute="leading" secondItem="3LI-6W-xXZ" secondAttribute="leading" id="heF-aj-v5y"/>
+                                            <constraint firstItem="7Z5-yQ-EMx" firstAttribute="centerY" secondItem="3LI-6W-xXZ" secondAttribute="centerY" id="uFh-Rl-8aq"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Kbc-LN-gLF" appends="YES" id="jQ1-gq-VN0"/>
@@ -46,12 +65,20 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="439"/>
                                                 <gestureRecognizers/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EYE IN THE SKY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7p-yT-ueL">
+                                                <rect key="frame" x="24" y="199" width="264.5" height="41"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="WIZ-No-ISk" secondAttribute="trailing" id="HaI-T6-6sh"/>
                                             <constraint firstItem="WIZ-No-ISk" firstAttribute="leading" secondItem="WcZ-Gm-Jh1" secondAttribute="leading" id="Qhd-pn-COe"/>
+                                            <constraint firstItem="W7p-yT-ueL" firstAttribute="centerY" secondItem="WcZ-Gm-Jh1" secondAttribute="centerY" id="X7v-hk-89Y"/>
                                             <constraint firstAttribute="bottom" secondItem="WIZ-No-ISk" secondAttribute="bottom" id="aDu-eJ-8XC"/>
+                                            <constraint firstItem="W7p-yT-ueL" firstAttribute="leading" secondItem="WcZ-Gm-Jh1" secondAttribute="leading" constant="24" id="i7G-l8-v4A"/>
                                             <constraint firstItem="WIZ-No-ISk" firstAttribute="top" secondItem="WcZ-Gm-Jh1" secondAttribute="top" id="j8b-WI-zJc"/>
                                         </constraints>
                                         <connections>
@@ -64,6 +91,12 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronomy" translatesAutoresizingMaskIntoConstraints="NO" id="e4E-eA-lkV">
                                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="438.5"/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ASTRONOMY PHOTOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuz-Sk-ctM">
+                                                <rect key="frame" x="24" y="198.5" width="375" height="41"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -71,6 +104,8 @@
                                             <constraint firstItem="e4E-eA-lkV" firstAttribute="leading" secondItem="H46-Nd-oAt" secondAttribute="leading" id="Fbs-8C-XvX"/>
                                             <constraint firstItem="e4E-eA-lkV" firstAttribute="top" secondItem="H46-Nd-oAt" secondAttribute="top" id="anc-1W-1tJ"/>
                                             <constraint firstAttribute="bottom" secondItem="e4E-eA-lkV" secondAttribute="bottom" id="e2V-lu-Tcq"/>
+                                            <constraint firstItem="zuz-Sk-ctM" firstAttribute="centerY" secondItem="H46-Nd-oAt" secondAttribute="centerY" id="eVX-zC-lKf"/>
+                                            <constraint firstItem="zuz-Sk-ctM" firstAttribute="leading" secondItem="H46-Nd-oAt" secondAttribute="leading" constant="24" id="rpv-sp-Hky"/>
                                             <constraint firstAttribute="trailing" secondItem="e4E-eA-lkV" secondAttribute="trailing" id="sng-5o-GpA"/>
                                         </constraints>
                                         <connections>
@@ -90,6 +125,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="zwv-XS-tqn"/>
+                    <connections>
+                        <outlet property="astronomyPhotosLabel" destination="zuz-Sk-ctM" id="JCs-l9-xnD"/>
+                        <outlet property="eyeInTheSkyLabel" destination="W7p-yT-ueL" id="mff-5U-ijv"/>
+                        <outlet property="roverSubTitleLabel" destination="40n-Kg-VXG" id="ijb-Z6-UF4"/>
+                        <outlet property="roverTitleLabel" destination="zVZ-eh-1Gz" id="5Bi-EF-nK2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Kbc-LN-gLF" userLabel="Mars Tap Gesture Recognizer">

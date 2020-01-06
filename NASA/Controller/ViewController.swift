@@ -9,11 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let client = NASAAPIClient()
-    var roverPhotos: [RoverPhoto] = []
 
+    @IBOutlet weak var roverTitleLabel: UILabel!
+    @IBOutlet weak var roverSubTitleLabel: UILabel!
+    
+    @IBOutlet weak var eyeInTheSkyLabel: UILabel!
+    
+    @IBOutlet weak var astronomyPhotosLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let aileronsLargeFont = UIFont(name: "Ailerons-Regular", size: 35)
+        let aileronsSmallFont = UIFont(name: "Ailerons-Regular", size: 24)
+        
+        roverTitleLabel.font = aileronsLargeFont
+        roverSubTitleLabel.font = aileronsSmallFont
+        
+        eyeInTheSkyLabel.font = aileronsLargeFont
+        
+        astronomyPhotosLabel.font = aileronsLargeFont
     }
 }

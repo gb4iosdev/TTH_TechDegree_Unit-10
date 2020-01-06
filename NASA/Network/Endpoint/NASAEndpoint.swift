@@ -12,7 +12,7 @@ enum NASAEndpoint {
     case marsRoverPhotos(rover: Rover, camera: Camera, date: Date)
     case earthImage(latitude: Double, longitude: Double)
     case astronomyImage(date: Date?)
-    case image(urlString: String)                    //provided as a full URL String
+    //case image(urlString: String)                    //provided as a full URL String
 }
 
 //conforms to the Endpoint protocol to assist with URL creation.
@@ -25,7 +25,7 @@ extension NASAEndpoint: Endpoint {
             return "/planetary/earth/imagery/"
         case .astronomyImage:
             return "/planetary/apod"
-        case .image: return ""
+        //case .image: return ""
         }
     }
     
@@ -58,27 +58,24 @@ extension NASAEndpoint: Endpoint {
             }
         
         //Image query handled separately.
-        case .image:
-            break
+//        case .image:
+//            break
         }
         result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         return result
     }
     
     var base: String {
-        switch self {
-        case .image:        return ""
-        default:            return "https://api.nasa.gov"
-        }
+        return "https://api.nasa.gov"
     }
     
-    //Image request handled separately to bypass QueryParameters creation.  No parameters required for this endpoint.
-    func requestForImage() -> URLRequest? {
-        switch self {
-        case .image(let urlString):
-            let url = URL(string: urlString)!
-            return URLRequest(url: url)
-        default:    return nil
-        }
-    }
+//    //Image request handled separately to bypass QueryParameters creation.  No parameters required for this endpoint.
+//    func requestForImage() -> URLRequest? {
+//        switch self {
+//        case .image(let urlString):
+//            let url = URL(string: urlString)!
+//            return URLRequest(url: url)
+//        default:    return nil
+//        }
+//    }
 }

@@ -44,9 +44,6 @@ class AstronomyPhotoCollectionController: UIViewController {
             let offset: Double = -Double(i) * 24*60*60
             photoDates.append(Date(timeIntervalSinceNow: offset))
         }
-        print(photoDates)
-        //create the endpoint
-        //let endpoint = NASAEndpoint.astronomyImage(date: nil)
         
         fetchAstronomyPhotos()
         
@@ -90,7 +87,6 @@ extension AstronomyPhotoCollectionController: UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(astronomyPhotos[indexPath.row].title)")
         let chosenPhoto = astronomyPhotos[indexPath.row]
         featurePhotoTitleLabel.text = chosenPhoto.title
         featurePhotoTitleLabel.isHidden = false
@@ -154,17 +150,9 @@ extension AstronomyPhotoCollectionController {
                 case .success(let result):
                     //Add results to dataSource:
                     let astronomyImageData = result as AstronomyPhoto
-                    print("Astronomy Image title is: \(astronomyImageData.title)")
-                    print("Astronomy Image date is: \(astronomyImageData.date)")
-                    print("Endpoint is: \(endpoint.request.url)")
                     if astronomyImageData.mediaType == "image" {
                         self?.astronomyPhotos.append(astronomyImageData)
                     }
-                    //let urls:[URL] = [astronomyImageData.imageURL, astronomyImageData.hdurl]
-                    //self?.fetchAstronomyImage(with: astronomyImageData.imageURL)
-    //                DispatchQueue.main.async {
-    //                    self?.configureImageDataLabel()
-    //                }
                     
                 case .failure(let error):
                     print("Error is: \(String(describing: error)) for url: \(endpoint.request.url)")

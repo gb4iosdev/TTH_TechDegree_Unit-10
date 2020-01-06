@@ -15,8 +15,8 @@ class AstronomyPhoto: Codable, RapidDownloadable {
     var image: UIImage?
     var imageDownloadState: ImageDownloadState = .placeholder
     let explanation: String
-    let hdurl: URL?
-    let copyright: String?
+    var hdurl: URL?
+    var copyright: String?
     let mediaType: String
     
     enum CodingKeys: String, CodingKey {

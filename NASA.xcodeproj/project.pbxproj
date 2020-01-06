@@ -12,6 +12,11 @@
 		862FA34C23BBDD0A000B81C7 /* AstronomyPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FA34B23BBDD0A000B81C7 /* AstronomyPhotoCell.swift */; };
 		8633F43C23B6A5E5006104B8 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43B23B6A5E5006104B8 /* PhotoDownloader.swift */; };
 		8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43D23B6DF55006104B8 /* PendingOperations.swift */; };
+		865C09D923C1195000C95EC1 /* EndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09D823C1195000C95EC1 /* EndpointTest.swift */; };
+		865C09DB23C11C9400C95EC1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09DA23C11C9400C95EC1 /* Model.swift */; };
+		865C09DD23C11F4C00C95EC1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09DC23C11F4C00C95EC1 /* Network.swift */; };
+		865C09DF23C1367A00C95EC1 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09DE23C1367A00C95EC1 /* Controller.swift */; };
+		865C09E123C15CD300C95EC1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09E023C15CD300C95EC1 /* Extension.swift */; };
 		865D41F423B8DE670017BD3F /* PostCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F323B8DE670017BD3F /* PostCardTextView.swift */; };
 		865D41F623B924B20017BD3F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F523B924B20017BD3F /* MapController.swift */; };
 		865D41FA23B926160017BD3F /* EarthImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D41F923B926160017BD3F /* EarthImage.swift */; };
@@ -30,6 +35,8 @@
 		86692C1423B534460047DA1E /* NASAAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C1323B534460047DA1E /* NASAAPIClient.swift */; };
 		86692C1823B591120047DA1E /* RoverPhotoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C1723B591120047DA1E /* RoverPhotoCollectionController.swift */; };
 		86692C1A23B593080047DA1E /* RoverPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C1923B593080047DA1E /* RoverPhotoCell.swift */; };
+		866BD44323C2AD9000DB027E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866BD44223C2AD9000DB027E /* View.swift */; };
+		866BD44523C2C7DD00DB027E /* Ailerons-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 866BD44423C2C76600DB027E /* Ailerons-Regular.otf */; };
 		866DCF4323B3F6B6001AEE0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DCF4223B3F6B6001AEE0F /* AppDelegate.swift */; };
 		866DCF4523B3F6B6001AEE0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DCF4423B3F6B6001AEE0F /* ViewController.swift */; };
 		866DCF4823B3F6B6001AEE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866DCF4623B3F6B6001AEE0F /* Main.storyboard */; };
@@ -44,12 +51,29 @@
 		86F6C06623BA6051000656BF /* AstronomyPhotoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C06523BA6051000656BF /* AstronomyPhotoCollectionController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		863061FD23C02A1800B8F0AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 866DCF3723B3F6B6001AEE0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 866DCF3E23B3F6B6001AEE0F;
+			remoteInfo = NASA;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		86205A6923B8313800C47C72 /* RoverPostCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPostCardController.swift; sourceTree = "<group>"; };
 		862FA34923BBD6DB000B81C7 /* RapidDownloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapidDownloadable.swift; sourceTree = "<group>"; };
 		862FA34B23BBDD0A000B81C7 /* AstronomyPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPhotoCell.swift; sourceTree = "<group>"; };
+		863061F823C02A1800B8F0AC /* NASATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NASATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		863061FC23C02A1800B8F0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8633F43B23B6A5E5006104B8 /* PhotoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDownloader.swift; sourceTree = "<group>"; };
 		8633F43D23B6DF55006104B8 /* PendingOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
+		865C09D823C1195000C95EC1 /* EndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTest.swift; sourceTree = "<group>"; };
+		865C09DA23C11C9400C95EC1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		865C09DC23C11F4C00C95EC1 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		865C09DE23C1367A00C95EC1 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		865C09E023C15CD300C95EC1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		865D41F323B8DE670017BD3F /* PostCardTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardTextView.swift; sourceTree = "<group>"; };
 		865D41F523B924B20017BD3F /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapController.swift; path = NASA/View/MapController.swift; sourceTree = SOURCE_ROOT; };
 		865D41F923B926160017BD3F /* EarthImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthImage.swift; sourceTree = "<group>"; };
@@ -68,6 +92,8 @@
 		86692C1323B534460047DA1E /* NASAAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAAPIClient.swift; sourceTree = "<group>"; };
 		86692C1723B591120047DA1E /* RoverPhotoCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoverPhotoCollectionController.swift; path = NASA/View/RoverPhotoCollectionController.swift; sourceTree = SOURCE_ROOT; };
 		86692C1923B593080047DA1E /* RoverPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoCell.swift; sourceTree = "<group>"; };
+		866BD44223C2AD9000DB027E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		866BD44423C2C76600DB027E /* Ailerons-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ailerons-Regular.otf"; path = "/Users/Gavin/Data/Swift Dev/Education/Treehouse/TechDegree/TTH_TechDegree_Unit-10/NASA/View/Ailerons-Regular.otf"; sourceTree = "<absolute>"; };
 		866DCF3F23B3F6B6001AEE0F /* NASA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		866DCF4223B3F6B6001AEE0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		866DCF4423B3F6B6001AEE0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +111,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		863061F523C02A1800B8F0AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		866DCF3C23B3F6B6001AEE0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +128,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		863061F923C02A1800B8F0AC /* NASATests */ = {
+			isa = PBXGroup;
+			children = (
+				866BD44223C2AD9000DB027E /* View.swift */,
+				865C09E023C15CD300C95EC1 /* Extension.swift */,
+				865C09DA23C11C9400C95EC1 /* Model.swift */,
+				865C09DE23C1367A00C95EC1 /* Controller.swift */,
+				865C09DC23C11F4C00C95EC1 /* Network.swift */,
+				865C09D823C1195000C95EC1 /* EndpointTest.swift */,
+				863061FC23C02A1800B8F0AC /* Info.plist */,
+			);
+			path = NASATests;
+			sourceTree = "<group>";
+		};
 		865D41FB23B926C40017BD3F /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +188,7 @@
 				865D41F323B8DE670017BD3F /* PostCardTextView.swift */,
 				86F6C05F23BA3A39000656BF /* SearchResultCell.swift */,
 				862FA34B23BBDD0A000B81C7 /* AstronomyPhotoCell.swift */,
+				866BD44423C2C76600DB027E /* Ailerons-Regular.otf */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				866DCF4123B3F6B6001AEE0F /* NASA */,
+				863061F923C02A1800B8F0AC /* NASATests */,
 				866DCF4023B3F6B6001AEE0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -177,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				866DCF3F23B3F6B6001AEE0F /* NASA.app */,
+				863061F823C02A1800B8F0AC /* NASATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +263,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		863061F723C02A1800B8F0AC /* NASATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8630620123C02A1800B8F0AC /* Build configuration list for PBXNativeTarget "NASATests" */;
+			buildPhases = (
+				863061F423C02A1800B8F0AC /* Sources */,
+				863061F523C02A1800B8F0AC /* Frameworks */,
+				863061F623C02A1800B8F0AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				863061FE23C02A1800B8F0AC /* PBXTargetDependency */,
+			);
+			name = NASATests;
+			productName = NASATests;
+			productReference = 863061F823C02A1800B8F0AC /* NASATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		866DCF3E23B3F6B6001AEE0F /* NASA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 866DCF5123B3F6B7001AEE0F /* Build configuration list for PBXNativeTarget "NASA" */;
@@ -236,10 +304,14 @@
 		866DCF3723B3F6B6001AEE0F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Gavin Butler";
 				TargetAttributes = {
+					863061F723C02A1800B8F0AC = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = 866DCF3E23B3F6B6001AEE0F;
+					};
 					866DCF3E23B3F6B6001AEE0F = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -259,11 +331,19 @@
 			projectRoot = "";
 			targets = (
 				866DCF3E23B3F6B6001AEE0F /* NASA */,
+				863061F723C02A1800B8F0AC /* NASATests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		863061F623C02A1800B8F0AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		866DCF3D23B3F6B6001AEE0F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,12 +351,26 @@
 				866DCF4D23B3F6B7001AEE0F /* LaunchScreen.storyboard in Resources */,
 				866DCF4A23B3F6B7001AEE0F /* Assets.xcassets in Resources */,
 				866DCF4823B3F6B6001AEE0F /* Main.storyboard in Resources */,
+				866BD44523C2C7DD00DB027E /* Ailerons-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		863061F423C02A1800B8F0AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				865C09E123C15CD300C95EC1 /* Extension.swift in Sources */,
+				865C09DF23C1367A00C95EC1 /* Controller.swift in Sources */,
+				866BD44323C2AD9000DB027E /* View.swift in Sources */,
+				865C09DB23C11C9400C95EC1 /* Model.swift in Sources */,
+				865C09D923C1195000C95EC1 /* EndpointTest.swift in Sources */,
+				865C09DD23C11F4C00C95EC1 /* Network.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		866DCF3B23B3F6B6001AEE0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +412,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		863061FE23C02A1800B8F0AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 866DCF3E23B3F6B6001AEE0F /* NASA */;
+			targetProxy = 863061FD23C02A1800B8F0AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		866DCF4623B3F6B6001AEE0F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -338,6 +440,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		863061FF23C02A1800B8F0AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJ2D2HE2JS;
+				INFOPLIST_FILE = NASATests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "gavin.butler01-bigpond.com.NASATests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NASA.app/NASA";
+			};
+			name = Debug;
+		};
+		8630620023C02A1800B8F0AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJ2D2HE2JS;
+				INFOPLIST_FILE = NASATests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "gavin.butler01-bigpond.com.NASATests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NASA.app/NASA";
+			};
+			name = Release;
+		};
 		866DCF4F23B3F6B7001AEE0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +637,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8630620123C02A1800B8F0AC /* Build configuration list for PBXNativeTarget "NASATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863061FF23C02A1800B8F0AC /* Debug */,
+				8630620023C02A1800B8F0AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		866DCF3A23B3F6B6001AEE0F /* Build configuration list for PBXProject "NASA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

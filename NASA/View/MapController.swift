@@ -41,6 +41,7 @@ class MapController: UIViewController {
         searchController.searchBar.searchBarStyle = .minimal
         self.definesPresentationContext = true
         searchController.searchBar.placeholder = "Enter place/location to find"
+        searchController.searchBar.barStyle = UIBarStyle.black
         navigationItem.searchController = searchController
         
         resultsController.tableView.dataSource = self
@@ -48,12 +49,6 @@ class MapController: UIViewController {
         searchController.searchBar.delegate = self
         resultsController.tableView.register(SearchResultCell.self, forCellReuseIdentifier: "DefaultCell")
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        mapView.removeBlurrEffect()
-//        imageView.removeBlurrEffect()
-//    }
 }
 
 

@@ -6,6 +6,10 @@
 //  Copyright © 2019 Gavin Butler. All rights reserved.
 //
 
+//  Performance Testing:
+//
+//  See Unit test: Networking/testJSONFetch which test that NASAAPIClient.fetchJSON() meets 2.0 second expectation for rover photo fetch.
+
 import UIKit
 
 @UIApplicationMain

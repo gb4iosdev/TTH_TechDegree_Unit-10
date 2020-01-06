@@ -10,8 +10,8 @@ import MapKit
 
 extension MKMapView {
     
-    //Sets the map’s region given a co-ordinate and span
-    private func setRegion(around coordinate: CLLocationCoordinate2D, withSpan span: Double) {
+    //Sets the map’s region given a co-ordinate and span.  @objc purely for unit testing
+    @objc func setRegion(around coordinate: CLLocationCoordinate2D, withSpan span: Double) {
         let span = MKCoordinateRegion(center: coordinate, latitudinalMeters: span, longitudinalMeters: span).span
         let region = MKCoordinateRegion(center: coordinate, span: span)
         self.setRegion(region, animated: true)

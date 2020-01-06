@@ -11,7 +11,7 @@ import UIKit
 //Subclassing UITextView to provide placeholder behaviour in the Rover Postcard customizable text view
 class PostCardTextView: UITextView {
 
-    private let placeholderText = "Enter postcard text here.\nDrag to move\nLong press to change text to black/white"
+    let placeholderText = "Enter postcard text here.\nDrag to move\nLong press to change text to black/white"
 
     //Set the placeholder text colour and actual text in the text view
     func setPlaceholder() {
