@@ -9,6 +9,19 @@
 //  Performance Testing:
 //
 //  See Unit test: Networking/testJSONFetch which test that NASAAPIClient.fetchJSON() meets 2.0 second expectation for rover photo fetch.
+//
+//  In Instruments:
+//
+//  Conducted Allocation tests with at least 4 generations for the following User navigations & with the associated findings:
+/*      1.  From main Screen to Mars Rover photos and back.  First 2 generations showed grow ranging from 2.7-3.6MB (8-38,000 persistent objects) but this dropped drastically to 16-46KB (49-161 persistent objects) by the 3rd and 4th generations.  No leak checks detected during run (all green) and could not find any objects from my code persisting.
+        2.  From Mars Rover photos screen to Post Card screen and back.  Similar behaviour noticed above except a large number of recognizable elements from my code appearing in the first generation.  Eg. UILabels indicative of the labels used in each collection view cell.  However no elements from my code were persisting in the 3rd-5th generations where growth was again very low; as low as 13KB.
+        3.  From main Screen to Eye in the sky initial screen and back.  No leaks detected but more substantial growth noticed (starting at 8MB) and taking longer to settle into the KB's.
+        4.  From Eye in the sky initial screen to search controller, execute search then back to Eye in the sky initial screen.  No leaks detected.  Largest contributors to growth were <non-object>, and then image related objects.  Checked MapController for code that would retain either earthImage or imageView but there was none.
+        5.  From Main Screen to Astronomy Photos initial screen, and back.  Similar results to step 1 above.  No leaks and no recognizable objects from my code being retained.
+        6.  In Astronomy Photos initial screen, scroll collection view select a photo, repeat.  Similar results to step 1 above.
+
+ 
+*/
 
 import UIKit
 
