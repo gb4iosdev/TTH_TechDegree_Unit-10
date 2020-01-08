@@ -8,9 +8,10 @@
 
 import MapKit
 
-//Create Address from MKMapItem detail
+
 extension MKMapItem {
     
+    //Create Address from MKMapItem detail
     var address: String {
         let placemark = self.placemark
         let number = placemark.subThoroughfare ?? ""

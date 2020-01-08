@@ -8,13 +8,14 @@
 
 import UIKit
 
+//Captures Photo of the Day API data from the NASA API, in order to then access imageURL and hdurl paths to retrieve images
+//Also tracks it's own image download state to support the asynchronous downloading.
 class AstronomyPhoto: Codable, RapidDownloadable {
     let title: String
     let date: String
     let imageURL: URL
     var image: UIImage?
     var imageDownloadState: ImageDownloadState = .placeholder
-    let explanation: String
     var hdurl: URL?
     var copyright: String?
     let mediaType: String
@@ -23,7 +24,6 @@ class AstronomyPhoto: Codable, RapidDownloadable {
         case title
         case date
         case imageURL = "url"
-        case explanation
         case hdurl
         case copyright
         case mediaType = "media_type"

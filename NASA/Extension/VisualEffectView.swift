@@ -10,6 +10,7 @@ import UIKit
 
 extension UIView {
     
+    //Add blurr effect to the view.  Used in Eye in the Sky component when user is resetting location search
     func addBlurrEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -19,6 +20,7 @@ extension UIView {
         self.addSubview(blurEffectView)
     }
     
+    //Remove all blurr effects from the view.
     func removeBlurrEffect() {
         for subView in self.subviews {
             if subView is UIVisualEffectView {

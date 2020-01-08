@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Simple high level entity to match the format of data returned by the NASA API for Mars Rover Photos
 class RoverPhotos: Codable {
     
     let photos: [RoverPhoto]

@@ -21,6 +21,9 @@ class RoverPhotoCollectionController: UIViewController {
     var roverPhotos: [RoverPhoto] = []
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let itemsPerRow: CGFloat = 3
+    var paddingSpace: CGFloat?
+    var availableWidth: CGFloat?
+    var widthPerItem: CGFloat?
     
     //Interface Builder Outlets:
     @IBOutlet weak var roverPhotoCollectionView: UICollectionView!
@@ -30,6 +33,8 @@ class RoverPhotoCollectionController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setCollectionCellSizeParameters()
         
         datePicker.setValue(UIColor.white, forKey: "textColor")
         datePicker.maximumDate = Date(timeIntervalSinceNow: 0.0)
@@ -105,11 +110,11 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        if let width = self.widthPerItem {
+            return CGSize(width: width, height: width)
+        } else {
+            return CGSize.zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -157,6 +162,13 @@ extension RoverPhotoCollectionController: UIPickerViewDelegate, UIPickerViewData
 
 //MARK:- Helper Methods:
 extension RoverPhotoCollectionController {
+    
+    //Precalculate cell dimensions to save time in sizeForItemAt
+    func setCollectionCellSizeParameters() {
+        paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        availableWidth = view.frame.width - paddingSpace!
+        widthPerItem = availableWidth! / itemsPerRow
+    }
     
     func downloadImage (_ roverPhoto: RoverPhoto, at indexPath: IndexPath) {
         

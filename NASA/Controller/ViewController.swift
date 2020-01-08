@@ -8,8 +8,10 @@
 
 import UIKit
 
+//Main View Controller - controls the landing screen and navigation to the 3 main sections of the app.
 class ViewController: UIViewController {
 
+    //IB Outlet variables
     @IBOutlet weak var roverTitleLabel: UILabel!
     @IBOutlet weak var roverSubTitleLabel: UILabel!
     
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Configure the UI with custom font
         let aileronsLargeFont = UIFont(name: "Ailerons-Regular", size: 35)
         let aileronsSmallFont = UIFont(name: "Ailerons-Regular", size: 24)
         

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Rover enum to support compilation of correct URL endpoint for Mars Rover Photo retrieval
 enum Rover: String {
     case curiosity
     case opportunity

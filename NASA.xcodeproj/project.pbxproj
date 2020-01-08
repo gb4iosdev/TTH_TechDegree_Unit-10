@@ -44,6 +44,7 @@
 		866DCF4D23B3F6B7001AEE0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866DCF4B23B3F6B7001AEE0F /* LaunchScreen.storyboard */; };
 		8679FCCD23B3FA0500AC7AD3 /* NASAEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */; };
 		8679FCCF23B3FA5800AC7AD3 /* EndpointExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */; };
+		86B2281C23C5417400874860 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2281B23C5417400874860 /* Networker.swift */; };
 		86F6C05E23BA374A000656BF /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C05D23BA374A000656BF /* MapItem.swift */; };
 		86F6C06023BA3A39000656BF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C05F23BA3A39000656BF /* SearchResultCell.swift */; };
 		86F6C06223BA4F16000656BF /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C06123BA4F16000656BF /* VisualEffectView.swift */; };
@@ -103,6 +104,7 @@
 		866DCF4E23B3F6B7001AEE0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NASAEndpoint.swift; sourceTree = "<group>"; };
 		8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointExamples.swift; sourceTree = "<group>"; };
+		86B2281B23C5417400874860 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		86F6C05D23BA374A000656BF /* MapItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
 		86F6C05F23BA3A39000656BF /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		86F6C06123BA4F16000656BF /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				8633F43B23B6A5E5006104B8 /* PhotoDownloader.swift */,
 				8633F43D23B6DF55006104B8 /* PendingOperations.swift */,
 				862FA34923BBD6DB000B81C7 /* RapidDownloadable.swift */,
+				86B2281B23C5417400874860 /* Networker.swift */,
 				865D41FB23B926C40017BD3F /* Endpoint */,
 				86692C0823B52D2C0047DA1E /* Error */,
 			);
@@ -386,6 +389,7 @@
 				86F6C06023BA3A39000656BF /* SearchResultCell.swift in Sources */,
 				862FA34C23BBDD0A000B81C7 /* AstronomyPhotoCell.swift in Sources */,
 				86692C0E23B52E630047DA1E /* RoverPhoto.swift in Sources */,
+				86B2281C23C5417400874860 /* Networker.swift in Sources */,
 				86F6C06223BA4F16000656BF /* VisualEffectView.swift in Sources */,
 				865D41FF23B971580017BD3F /* Double.swift in Sources */,
 				86692C0A23B52D520047DA1E /* APIError.swift in Sources */,

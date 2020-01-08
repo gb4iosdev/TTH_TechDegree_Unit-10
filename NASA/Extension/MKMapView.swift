@@ -22,6 +22,7 @@ extension MKMapView {
         self.setRegion(around: centre, withSpan: span)
     }
     
+    //Add an annotation and related text to highlight a location in the mapview
     func addAnnotation(at location: CLLocationCoordinate2D, title: String?, subTitle: String?) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
@@ -31,6 +32,7 @@ extension MKMapView {
         self.selectAnnotation(annotation, animated: true)
     }
     
+    //Remove all annotations from self - the mapview.
     func removeAllAnnotations() {
         let allAnnotations = self.annotations
         self.removeAnnotations(allAnnotations)

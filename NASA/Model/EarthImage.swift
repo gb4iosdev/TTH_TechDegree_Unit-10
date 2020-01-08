@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Captures Earth image API data from the NASA API, in order to then access imageURL to retrieve most recent satellite image of user specified location.
 class EarthImage: Codable {
     
     let id: String

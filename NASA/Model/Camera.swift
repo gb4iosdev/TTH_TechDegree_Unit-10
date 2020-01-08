@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Camer names and long descriptions for all cameras found on the 3 mars rovers
 enum Camera: String {
     case all
     case fhaz

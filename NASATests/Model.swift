@@ -93,7 +93,6 @@ struct JSONExample {
         "title" : "Test Title",
         "date" : "2020-01-01",
         "url" : "https://api.nasa.gov",
-        "explanation" : "Test Explanation",
         "media_type" : "image"
     }
     """.data(using: .utf8)!

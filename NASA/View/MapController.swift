@@ -133,6 +133,7 @@ extension MapController: UISearchResultsUpdating, UISearchBarDelegate {
             }
         } else {
             mapView.addBlurrEffect()
+            mapView.removeAllAnnotations()
             imageView.addBlurrEffect()
         }
     }

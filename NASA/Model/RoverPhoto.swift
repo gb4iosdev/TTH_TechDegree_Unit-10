@@ -8,6 +8,8 @@
 
 import UIKit
 
+//Captures Rover Photo API data from the NASA API, in order to then access imageURL path to retrieve the corresponding image
+//Also tracks it's own image download state to support the asynchronous downloading.
 class RoverPhoto: Codable, RapidDownloadable {
     
     let id: Int

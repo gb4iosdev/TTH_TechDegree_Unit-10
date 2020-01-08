@@ -20,6 +20,11 @@
         5.  From Main Screen to Astronomy Photos initial screen, and back.  Similar results to step 1 above.  No leaks and no recognizable objects from my code being retained.
         6.  In Astronomy Photos initial screen, scroll collection view select a photo, repeat.  Similar results to step 1 above.
 
+ //  Conducted user navigation with Time Profiler running (Call Tree parameters "Separate by Thread" and "Hide System Libraries" set to on) and made the following observations & changes:
+        1.  In the Mars Rover part of the app, the main contributors to time were in the cellForItemAt and layoutSizeForItemAt methods.  In cellForItemAt the instantiation of the RoverCell was a contributor but I thought the dequeingReusable code there was standed.  In layoutSizeForItemAt however, I noticed that all the measures in there could be pre-calculated so I moved them to viewDidLoad and re-ran the Time Profiler.  This reduced the % weight attributed to layoutSizeForItemAt to 0.0%.
+        2.  In the Eye in the sky part of the app, a contributor to the time was in the Results Controller cellForRowAt method, specifically with the MapItem address getter.  Noticed that this had a nil coalescing check for each address component, so removed this and used String(describing:) instead.  Re-ran but this made the delay worse so restored the code.
+        3.  In the Astronomy Photos section of the app, per slack advice from @theDan84, I confirmed that the network call to the high res image was indeed occupying time on the main thread with the "try? Data(contentsOf: url)" call.  Replaced the code with a URL session based fetch and re-ran the Time Profiler to confirm the time on the main thread was reduced.
+ 
  
 */
 
