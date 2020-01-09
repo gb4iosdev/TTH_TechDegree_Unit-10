@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Utilized in APIClient protocol extension to segregate different error types returned from the fetch/parse function
 enum APIError: Error {
 
     case requestFailed

@@ -8,11 +8,11 @@
 
 import UIKit
 
+//Encapsulate endpoints for the 3 main app areas:
 enum NASAEndpoint {
     case marsRoverPhotos(rover: Rover, camera: Camera, date: Date)
     case earthImage(latitude: Double, longitude: Double)
     case astronomyImage(date: Date?)
-    //case image(urlString: String)                    //provided as a full URL String
 }
 
 //conforms to the Endpoint protocol to assist with URL creation.
@@ -25,7 +25,6 @@ extension NASAEndpoint: Endpoint {
             return "/planetary/earth/imagery/"
         case .astronomyImage:
             return "/planetary/apod"
-        //case .image: return ""
         }
     }
     
@@ -35,7 +34,7 @@ extension NASAEndpoint: Endpoint {
         let apiKey = "4Ye02d6tWRNIZvP5a9RMOnFbePacsNy6ZfwIcW9l"
         
         switch self {
-        //Main Discover query for movie fetches.
+        //Build Parameter lists (Query Items) with reference to the ParameterKey Class.
         case .marsRoverPhotos(_, let camera, let date):
             //Add the query items
             if camera != .all {     //All camera option means that the query item should be excluded altogether
@@ -56,11 +55,8 @@ extension NASAEndpoint: Endpoint {
                 let dateQueryItem = URLQueryItem(name: ParameterKey.date.rawValue, value: photoDate.asEarthDate())
                 result.append(dateQueryItem)
             }
-        
-        //Image query handled separately.
-//        case .image:
-//            break
         }
+        //API Key is required in all urls for the NASA API
         result.append(URLQueryItem(name: ParameterKey.apiKey.rawValue, value: apiKey))
         return result
     }
@@ -68,14 +64,4 @@ extension NASAEndpoint: Endpoint {
     var base: String {
         return "https://api.nasa.gov"
     }
-    
-//    //Image request handled separately to bypass QueryParameters creation.  No parameters required for this endpoint.
-//    func requestForImage() -> URLRequest? {
-//        switch self {
-//        case .image(let urlString):
-//            let url = URL(string: urlString)!
-//            return URLRequest(url: url)
-//        default:    return nil
-//        }
-//    }
 }

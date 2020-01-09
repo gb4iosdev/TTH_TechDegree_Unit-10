@@ -9,6 +9,7 @@
 
 import Foundation
 
+//Data Fetcher that simply fetches asynchronously, determines if result is a success or fail, and passes back according.  Type agnostic – no parsing here.
 class Networker {
     static func request(url: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: url) else { return }

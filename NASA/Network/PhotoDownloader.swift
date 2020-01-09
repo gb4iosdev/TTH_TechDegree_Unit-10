@@ -1,5 +1,5 @@
 //
-//  RoverPhotoDownloader.swift
+//  PhotoDownloader.swift
 //  NASA
 //
 //  Created by Gavin Butler on 27-12-2019.
@@ -8,9 +8,10 @@
 
 import UIKit
 
+//Handles downloading of the Images required for tableView Cells or collectionView Cells or similar.
 class PhotoDownloader: Operation {
-    //Download Rover image and assign it back to the Rover Photo instance
     
+    //Of protocol type RapidDownloadable so that either a Mars Rover Photo or Astronomy Photo can be passed in.
     var photo: RapidDownloadable
     
     init(photo: RapidDownloadable) {
@@ -25,8 +26,22 @@ class PhotoDownloader: Operation {
             return
         }
         
-        //Download artwork associated with the rover photo.
+        //Download artwork associated with the photo.
         let url = photo.imageURL
+        
+        /*Networker.request(url: url.absoluteString) { result in
+            if self.isCancelled {
+                return
+            }
+            do {
+                let imageData = try result.get()
+                self.photo.image = UIImage(data: imageData)
+                self.photo.imageDownloadState = .downloaded
+                
+            } catch {
+                self.photo.imageDownloadState = .failed
+            }
+        }*/
         
         guard let imageData = try? Data(contentsOf: url) else { return }
         

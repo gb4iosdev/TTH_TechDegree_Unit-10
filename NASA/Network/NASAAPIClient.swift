@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Main class for network calls.  Conforms to APIClient protocol and leverages fetch method provided in that protocol’s extension.
 class NASAAPIClient: APIClient {
     let decoder = JSONDecoder()
     let session: URLSession

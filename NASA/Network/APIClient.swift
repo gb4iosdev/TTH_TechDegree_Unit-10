@@ -15,6 +15,7 @@ protocol APIClient {
 
 extension APIClient {
     
+    //Fetch the data using a URL session object and attempt to convert to the type specified.  If successful, return via completion handler as associated value on result.success.  Else return error in result.error
     func fetchJSON<T: Codable>(with urlRequest: URLRequest, toType type: T.Type, completionHandler completion: @escaping (Result<T, APIError>) -> Void) {
         
         let task = session.dataTask(with: urlRequest) { data, response, error in
@@ -25,11 +26,9 @@ extension APIClient {
                 }
                 if httpResponse.statusCode == 200 {
                     do {
-                        //print(String(data: data, encoding: .utf8)!)
                         let entity = try self.decoder.decode(type, from: data)
                         completion(Result.success(entity))
                     } catch {
-                        print(error.localizedDescription)
                         completion(Result.failure(.jsonParsingFailure)) //Successful http status code, have data but can’t parse to the model.
                     }
                 } else {

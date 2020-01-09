@@ -25,7 +25,7 @@
         2.  In the Eye in the sky part of the app, a contributor to the time was in the Results Controller cellForRowAt method, specifically with the MapItem address getter.  Noticed that this had a nil coalescing check for each address component, so removed this and used String(describing:) instead.  Re-ran but this made the delay worse so restored the code.
         3.  In the Astronomy Photos section of the app, per slack advice from @theDan84, I confirmed that the network call to the high res image was indeed occupying time on the main thread with the "try? Data(contentsOf: url)" call.  Replaced the code with a URL session based fetch and re-ran the Time Profiler to confirm the time on the main thread was reduced.
  
- 
+ // Conducted user navigation across all app components with the Leaks Instrument running and there were no leaks as evidenced by no entries in the Leaks/Leaks/Leaks by Backtrace window.
 */
 
 import UIKit

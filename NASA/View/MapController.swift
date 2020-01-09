@@ -62,18 +62,17 @@ extension MapController {
         
         let endpoint =  NASAEndpoint.earthImage(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
-        print("Endpoint is: \(endpoint.request.url)")
-        
         //Execute the fetch
         client.fetchJSON(with: endpoint.request, toType: EarthImage.self) { [weak self] result in
             switch result {
             case .success(let result):
                 //Add results to dataSource:
                 self?.earthImage = result as EarthImage
-                print("EarthImage ID is: \(self?.earthImage?.id) and URL is: \(self?.earthImage?.url)")
+                //If the earth image data comes with a url asynchronously fetch this to retrieve the image
                 if let url = self?.earthImage?.url {
                     self?.fetchEarthImage(with: url)
                 }
+                //Update the UI with image data
                 DispatchQueue.main.async {
                     self?.configureImageDataLabel()
                 }
@@ -85,17 +84,18 @@ extension MapController {
     
     func fetchEarthImage(with url: URL) {
         
-        guard let imageData = try? Data(contentsOf: url) else { return }
-        
-        if imageData.count > 0, let earthImage = self.earthImage {    ///Assume data is valid
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: imageData)
+        Networker.request(url: url.absoluteString) { result in
+            do {
+                let imageData = try result.get()
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: imageData)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
             }
         }
-        
-        
     }
-    
 }
 
 //MARK: - Helper Methods
@@ -105,7 +105,6 @@ extension MapController {
             var labelString = "ID: \(earthImageData.id)  "
             labelString.append("Date: \(earthImageData.imageDate.prefix(10))  ")
             labelString.append("CloudScore: \(earthImageData.cloudScore.asPercent())")
-            print("labelString")
             imageDataLabel.adjustsFontSizeToFitWidth = true
             imageDataLabel.text = labelString
         }
