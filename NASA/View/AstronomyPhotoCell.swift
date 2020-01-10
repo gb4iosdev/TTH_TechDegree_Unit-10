@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Custom cell for AstronomyPhoto CollectionView
 class AstronomyPhotoCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: AstronomyPhotoCell.self)
@@ -17,6 +18,7 @@ class AstronomyPhotoCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
+    //Configure the cell’s labels from an AstronomyPhoto object.
     func configure(with astronomyPhoto: AstronomyPhoto) {
         titleLabel.text = astronomyPhoto.title
         titleLabel.adjustsFontSizeToFitWidth = true

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Custom Cell for Rover Photos
 class RoverPhotoCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: RoverPhotoCell.self)
@@ -16,7 +17,7 @@ class RoverPhotoCell: UICollectionViewCell {
     @IBOutlet weak var roverNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    
+    //Configure cell labels using RoverPhoto information passed down from the API
     func configure(with roverPhoto: RoverPhoto) {
         roverNameLabel.text = roverPhoto.rover.name + " : " + roverPhoto.camera.name + " : " + "(\(String(roverPhoto.id)))"
         roverNameLabel.adjustsFontSizeToFitWidth = true

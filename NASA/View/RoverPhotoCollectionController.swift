@@ -15,7 +15,7 @@ class RoverPhotoCollectionController: UIViewController {
     //Networking variables
     let client = NASAAPIClient()
     let pendingOperations = PendingOperations()
-    var pendingFetchURL: URL?
+    var pendingFetchURL: URL?   //Keeps track of the most recent URL requested through the UI
     
     //Collection View variables & constants:
     var roverPhotos: [RoverPhoto] = []

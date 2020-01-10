@@ -11,16 +11,20 @@ import MapKit
 
 class MapController: UIViewController {
     
+    //Network variables
     let client = NASAAPIClient()
-    let resultsController = UITableViewController(style: .plain)
     var earthImage: EarthImage?
     
-    //Search/map related variables & constants
+    //Search & map related variables & constants
     let searchRequest = MKLocalSearch.Request()
     let mapSpan = 1_400.0
-    let defaultLocation = CLLocationCoordinate2D(latitude: 45.4083, longitude: -75.7187)
     var filteredPlaces: [MKMapItem] = []    //Datasource for search
     
+    //Search Results
+    let resultsController = UITableViewController(style: .plain)
+    let resultsControllerDefaultCellIdentifier = "Default Cell"
+    
+    //IB Outlet variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageDataLabel: UILabel!
@@ -29,25 +33,9 @@ class MapController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.adjust(centreTo: defaultLocation, span: mapSpan)
-        mapView.addAnnotation(at: defaultLocation, title: "Ottawa", subTitle: "Ottawa City Centre")
+        configureSearchController()
         
-        fetchEarthImageryData(at: defaultLocation)
-        
-        let searchController = UISearchController(searchResultsController: resultsController)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.searchBarStyle = .minimal
-        self.definesPresentationContext = true
-        searchController.searchBar.placeholder = "Enter place/location to find"
-        searchController.searchBar.barStyle = UIBarStyle.black
-        navigationItem.searchController = searchController
-        
-        resultsController.tableView.dataSource = self
-        resultsController.tableView.delegate = self
-        searchController.searchBar.delegate = self
-        resultsController.tableView.register(SearchResultCell.self, forCellReuseIdentifier: "DefaultCell")
+        configureResultsController()
     }
 }
 
@@ -72,7 +60,7 @@ extension MapController {
                 if let url = self?.earthImage?.url {
                     self?.fetchEarthImage(with: url)
                 }
-                //Update the UI with image data
+                //Populate the labels from the data while the image is fetching.
                 DispatchQueue.main.async {
                     self?.configureImageDataLabel()
                 }
@@ -100,6 +88,29 @@ extension MapController {
 
 //MARK: - Helper Methods
 extension MapController {
+    
+    //Set searchController parameters and assign to the navigation bar
+    func configureSearchController() {
+        let searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.searchBarStyle = .minimal
+        self.definesPresentationContext = true
+        searchController.searchBar.placeholder = "Enter place/location to find"
+        searchController.searchBar.barStyle = UIBarStyle.black
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+    }
+    
+    //Set resultsController delegate, datasource and register cell.
+    func configureResultsController() {
+        resultsController.tableView.dataSource = self
+        resultsController.tableView.delegate = self
+        resultsController.tableView.register(SearchResultCell.self, forCellReuseIdentifier: resultsControllerDefaultCellIdentifier)
+    }
+
+    //Set the Label displaying image information if set
     func configureImageDataLabel() {
         if let earthImageData = self.earthImage {
             var labelString = "ID: \(earthImageData.id)  "
@@ -130,15 +141,15 @@ extension MapController: UISearchResultsUpdating, UISearchBarDelegate {
                     }
                 }
             }
-        } else {
+        } else {        //Remove annotations and blur the views to put the focus back on the search bar
             mapView.addBlurrEffect()
             mapView.removeAllAnnotations()
             imageView.addBlurrEffect()
         }
     }
     
+    //Restore image clarity if search cancelled
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("Search bar cancelled")
         mapView.removeBlurrEffect()
         imageView.removeBlurrEffect()
     }
@@ -155,8 +166,9 @@ extension MapController: UITableViewDataSource, UITableViewDelegate {
         return filteredPlaces.count
     }
     
+        //Extract the result information from the mapKit item and apply to the cell labels.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: resultsControllerDefaultCellIdentifier) else { return UITableViewCell() }
         let mapKitItem = filteredPlaces[indexPath.row]
         cell.textLabel?.text = mapKitItem.name
         cell.detailTextLabel?.text = mapKitItem.address
@@ -165,6 +177,7 @@ extension MapController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //Dismiss the results controller, update the map view and start the image fetch based on the chosen location
         resultsController.dismiss(animated: true, completion: {
             let resultsSelection = self.filteredPlaces[indexPath.row]
             if let resultsCoordinate = resultsSelection.placemark.location?.coordinate {

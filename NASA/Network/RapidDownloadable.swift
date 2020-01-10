@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Objects conforming to this protocol and utilize the image downloading functionality in the PhotoDownloader class
 protocol RapidDownloadable {
     var imageURL: URL { get }
     var imageDownloadState: ImageDownloadState { get set }
