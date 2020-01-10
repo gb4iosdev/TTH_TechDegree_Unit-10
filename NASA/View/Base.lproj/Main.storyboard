@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="1499" y="14"/>
         </scene>
-        <!--Astronomy Photo Collection Controller-->
+        <!--Astronomy Photo of the Day-->
         <scene sceneID="cz8-im-Jas">
             <objects>
                 <viewController id="zR9-QW-UGZ" customClass="AstronomyPhotoCollectionController" customModule="NASA" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,7 +272,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="B9I-uu-xgq" firstAttribute="centerX" secondItem="frZ-Ud-8Yg" secondAttribute="centerX" id="NPe-PN-tyh"/>
                                                         <constraint firstItem="QXd-TR-Mqn" firstAttribute="leading" secondItem="frZ-Ud-8Yg" secondAttribute="leading" constant="8" id="R6m-7Z-jh5"/>
@@ -285,7 +285,7 @@
                                                         <constraint firstItem="B9I-uu-xgq" firstAttribute="top" secondItem="frZ-Ud-8Yg" secondAttribute="top" id="t2O-iq-vIp"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="astronomyImageView" destination="B9I-uu-xgq" id="L1O-mD-hCX"/>
                                                     <outlet property="detailLabel" destination="Vzv-gq-sO1" id="zCD-px-U88"/>
@@ -335,7 +335,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oXz-Ss-E3g"/>
                     </view>
-                    <navigationItem key="navigationItem" id="thy-fq-byL"/>
+                    <navigationItem key="navigationItem" title="Astronomy Photo of the Day" largeTitleDisplayMode="always" id="thy-fq-byL"/>
                     <connections>
                         <outlet property="astronomyPhotoCollectionView" destination="ih6-Ar-l7o" id="Fl7-zG-193"/>
                         <outlet property="featurePhotoDetailLabel" destination="YIS-kO-dTi" id="WLe-DJ-sLt"/>
@@ -577,11 +577,14 @@ Long press to change text to black/white</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qpp-h0-eSD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFi-pC-ckS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="UFi-pC-ckS">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Cell used by Search Results Controller
 class SearchResultCell: UITableViewCell {
 
     

@@ -12,6 +12,7 @@
 		862FA34C23BBDD0A000B81C7 /* AstronomyPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FA34B23BBDD0A000B81C7 /* AstronomyPhotoCell.swift */; };
 		8633F43C23B6A5E5006104B8 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43B23B6A5E5006104B8 /* PhotoDownloader.swift */; };
 		8633F43E23B6DF55006104B8 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633F43D23B6DF55006104B8 /* PendingOperations.swift */; };
+		864588FB23C8D0500040B782 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864588FA23C8D0500040B782 /* AsyncOperation.swift */; };
 		865C09D923C1195000C95EC1 /* EndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09D823C1195000C95EC1 /* EndpointTest.swift */; };
 		865C09DB23C11C9400C95EC1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09DA23C11C9400C95EC1 /* Model.swift */; };
 		865C09DD23C11F4C00C95EC1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C09DC23C11F4C00C95EC1 /* Network.swift */; };
@@ -70,6 +71,7 @@
 		863061FC23C02A1800B8F0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8633F43B23B6A5E5006104B8 /* PhotoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDownloader.swift; sourceTree = "<group>"; };
 		8633F43D23B6DF55006104B8 /* PendingOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
+		864588FA23C8D0500040B782 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		865C09D823C1195000C95EC1 /* EndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTest.swift; sourceTree = "<group>"; };
 		865C09DA23C11C9400C95EC1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		865C09DC23C11F4C00C95EC1 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				8633F43D23B6DF55006104B8 /* PendingOperations.swift */,
 				862FA34923BBD6DB000B81C7 /* RapidDownloadable.swift */,
 				86B2281B23C5417400874860 /* Networker.swift */,
+				864588FA23C8D0500040B782 /* AsyncOperation.swift */,
 				865D41FB23B926C40017BD3F /* Endpoint */,
 				86692C0823B52D2C0047DA1E /* Error */,
 			);
@@ -408,6 +411,7 @@
 				865D41F423B8DE670017BD3F /* PostCardTextView.swift in Sources */,
 				86F6C05E23BA374A000656BF /* MapItem.swift in Sources */,
 				86692BFE23B50D360047DA1E /* Endpoint.swift in Sources */,
+				864588FB23C8D0500040B782 /* AsyncOperation.swift in Sources */,
 				86692C1223B5313A0047DA1E /* RoverPhotos.swift in Sources */,
 				86692C0723B526EE0047DA1E /* Date.swift in Sources */,
 				86692C0023B50EFB0047DA1E /* ParameterKey.swift in Sources */,

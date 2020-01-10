@@ -9,7 +9,7 @@
 import UIKit
 
 //Handles downloading of the Images required for tableView Cells or collectionView Cells or similar.
-class PhotoDownloader: Operation {
+class PhotoDownloader: AsyncOperation {
     
     //Of protocol type RapidDownloadable so that either a Mars Rover Photo or Astronomy Photo can be passed in.
     var photo: RapidDownloadable
@@ -29,31 +29,23 @@ class PhotoDownloader: Operation {
         //Download artwork associated with the photo.
         let url = photo.imageURL
         
-        /*Networker.request(url: url.absoluteString) { result in
+        Networker.request(url: url.absoluteString) { result in
+            defer { self.state = .finished }
             if self.isCancelled {
                 return
             }
-            do {
-                let imageData = try result.get()
-                self.photo.image = UIImage(data: imageData)
-                self.photo.imageDownloadState = .downloaded
-                
-            } catch {
+            
+            guard let imageData = try? result.get() else {
                 self.photo.imageDownloadState = .failed
+                return
             }
-        }*/
-        
-        guard let imageData = try? Data(contentsOf: url) else { return }
+            self.photo.image = UIImage(data: imageData)
+            self.state = .finished
+            self.photo.imageDownloadState = .downloaded
+        }
         
         if self.isCancelled {
             return
-        }
-        
-        if imageData.count > 0 {    ///Assume data is valid
-            photo.image = UIImage(data: imageData)
-            photo.imageDownloadState = .downloaded
-        } else {
-            photo.imageDownloadState = .failed
         }
     }
 }

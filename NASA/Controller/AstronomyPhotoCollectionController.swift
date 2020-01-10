@@ -14,7 +14,7 @@ class AstronomyPhotoCollectionController: UIViewController {
     //Data Source
     var astronomyPhotos: [AstronomyPhoto] = []
     var photoDates: [Date] = []
-    let numberOfPhotos = 30
+    let numberOfPhotos = 20
     
     //Network
     let client = NASAAPIClient()

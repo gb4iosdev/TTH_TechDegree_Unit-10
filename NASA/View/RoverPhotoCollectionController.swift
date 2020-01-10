@@ -31,44 +31,39 @@ class RoverPhotoCollectionController: UIViewController {
     @IBOutlet weak var cameraPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    //UI Interaction Element defaults
+    let datePickerDefaultTextColour = UIColor.white
+    let datePickerStartingDate = "2015-11-05"
+    let segmentedControlColour = UIColor.white
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Pre calculate collection view cell sizes
         setCollectionCellSizeParameters()
         
-        datePicker.setValue(UIColor.white, forKey: "textColor")
-        datePicker.maximumDate = Date(timeIntervalSinceNow: 0.0)
-        datePicker.minimumDate = Rover.curiosity.landingDate
-        datePicker.date = Date.fromEarthDate("2015-11-05")!
-        
-        roverSegmentedControl.backgroundColor = UIColor.clear
-        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        roverSegmentedControl.setTitleTextAttributes(attributes, for: .normal)
-        
-        fetchRoverPhotos()
+        //Date picker and segmented control settings
+        configureUI()
+
+        //Populate UI with initial data
+        updateForRover()
         
     }
     
+    //Rover selected
     @IBAction func roverSegmentedControlSelected(_ sender: UISegmentedControl) {
         
-        //Set minimum date for date picker
-        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let rover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
-        datePicker.minimumDate = rover.landingDate
-        
-        //Reload the cameras
-        cameraPicker.reloadAllComponents()
-        
-        //Fetch the photos
-        fetchRoverPhotos()
+        updateForRover()
     }
     
+    //Date selected
     @IBAction func dateSelected(_ sender: UIDatePicker) {
         
         fetchRoverPhotos()
     }
-    
-    
 }
+
 
 // MARK: - CollectionView DataSource & delegate methods:
 
@@ -85,12 +80,14 @@ extension RoverPhotoCollectionController: UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //Return a custom rover photo cell.
+        //Create and return a custom rover photo cell.
         let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseIdentifier, for: indexPath) as! RoverPhotoCell
 
+        //Configure the cell with data from API
         let roverPhoto = roverPhotos[indexPath.row]
         photoCell.configure(with: roverPhoto)
         
+        //Set the image
         if roverPhoto.imageDownloadState == .downloaded {   //If the image has already been downloaded, use that
             photoCell.roverImageView.image = roverPhoto.image
             photoCell.roverImageView.alpha = 1.0
@@ -143,11 +140,12 @@ extension RoverPhotoCollectionController: UIPickerViewDelegate, UIPickerViewData
         return chosenRover.cameras.count
     }
     
+    //Picker view TitleForRow with attributes!
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return NSAttributedString(string: "Error") }
         
-        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        let attributes = [NSAttributedString.Key.foregroundColor : datePickerDefaultTextColour]
         return NSAttributedString(string: chosenRover.cameras[row].description, attributes: attributes)
     }
     
@@ -170,6 +168,32 @@ extension RoverPhotoCollectionController {
         widthPerItem = availableWidth! / itemsPerRow
     }
     
+    func configureUI() {
+        //Configure Date Picker parameters
+        datePicker.setValue(UIColor.white, forKey: "textColor")
+        datePicker.maximumDate = Date(timeIntervalSinceNow: 0.0)
+        datePicker.date = Date.fromEarthDate(datePickerStartingDate)!
+     
+        //Configure Segmented Control
+        roverSegmentedControl.backgroundColor = UIColor.clear
+        let attributes = [NSAttributedString.Key.foregroundColor : segmentedControlColour]
+        roverSegmentedControl.setTitleTextAttributes(attributes, for: .normal)
+    }
+
+    //Update the UI controls dependent on the Rover segmented control, and fetch
+    func updateForRover()  {
+        //Set minimum date for date picker
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let rover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return }
+        datePicker.minimumDate = rover.landingDate
+        
+        //Reload the cameras
+        cameraPicker.reloadAllComponents()
+        
+        //Fetch the photos
+        fetchRoverPhotos()
+    }
+
+    //Download the image for the collection view cell
     func downloadImage (_ roverPhoto: RoverPhoto, at indexPath: IndexPath) {
         
         //Don’t do anything if this download is already in progress.
@@ -211,8 +235,6 @@ extension RoverPhotoCollectionController {
         
         let endpoint =  NASAEndpoint.marsRoverPhotos(rover: rover, camera: camera, date: date)
         
-        print("Endpoint is: \(endpoint.request.url)")
-        
         //Save this as the current pending Fetch:
         self.pendingFetchURL = endpoint.request.url
         
@@ -252,6 +274,7 @@ extension RoverPhotoCollectionController {
             return
         }
         
+        //Dependency inject the rover image
         postCardController.roverImage = photoCell.roverImageView.image
         
     }
