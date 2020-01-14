@@ -23,16 +23,16 @@ enum Camera: String {
     
     var description: String {
         switch self {
-        case .all:      return "All Cameras"
-        case .fhaz:     return "Front Hazard Avoidance Camera"
-        case .rhaz:     return "Rear Hazard Avoidance Camera"
-        case .mast:     return "Mast Camera"
-        case .chemcam:  return "Chemistry and Camera Complex"
-        case .mahli:    return "Mars Hand Lens Imager"
-        case .mardi:    return "Mars Descent Imager"
-        case .navcam:   return "Navigation Camera"
-        case .pancam:   return "Panoramic Camera"
-        case .minites:  return "Miniature Thermal Emission Spectrometer (Mini-TES)"
+        case .all:      return "ALL CAMERAS"
+        case .fhaz:     return "FHAZ"
+        case .rhaz:     return "RHAZ"
+        case .mast:     return "MAST"
+        case .chemcam:  return "CHEMCHAM"
+        case .mahli:    return "MAHLI"
+        case .mardi:    return "MARDI"
+        case .navcam:   return "NAVCAM"
+        case .pancam:   return "PANCAOM"
+        case .minites:  return "MINI-TES"
         }
     }
 }

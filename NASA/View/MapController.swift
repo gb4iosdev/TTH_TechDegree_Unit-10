@@ -16,9 +16,9 @@ class MapController: UIViewController {
     var earthImage: EarthImage?
     
     //Search & map related variables & constants
-    let searchRequest = MKLocalSearch.Request()
+    var searchCompleter = MKLocalSearchCompleter()
     let mapSpan = 1_400.0
-    var filteredPlaces: [MKMapItem] = []    //Datasource for search
+    var filteredPlaces: [MKLocalSearchCompletion] = []    //Completions from search
     
     //Search Results
     let resultsController = UITableViewController(style: .plain)
@@ -33,7 +33,7 @@ class MapController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureSearchController()
+        configureForSearch()
         
         configureResultsController()
     }
@@ -90,7 +90,8 @@ extension MapController {
 extension MapController {
     
     //Set searchController parameters and assign to the navigation bar
-    func configureSearchController() {
+    func configureForSearch() {
+        //Search Controller:
         let searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -101,6 +102,10 @@ extension MapController {
         searchController.searchBar.barStyle = UIBarStyle.black
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        
+        //searchCompleter
+        searchCompleter.delegate = self
+        searchCompleter.region = mapView.region
     }
     
     //Set resultsController delegate, datasource and register cell.
@@ -123,24 +128,25 @@ extension MapController {
 }
 
 //SearchController delegate methods:
+extension MapController: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        self.filteredPlaces = completer.results
+        self.resultsController.tableView.reloadData()
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print("Error with search completer:  \(error.localizedDescription)")
+    }
+}
+
+//SearchController delegate methods:
 extension MapController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         //If there is text, use it as the filter
         if !searchController.searchBar.text!.isEmpty {
-            searchRequest.naturalLanguageQuery = searchController.searchBar.text!
-            searchRequest.region = mapView.region
+            //Set the search completer's query fragment which will then in turn invoke it's MKLocalSearchCompleterDelegate method completerDidUpdateResults
+            searchCompleter.queryFragment = searchController.searchBar.text!
             
-            let search = MKLocalSearch(request: searchRequest)
-            
-            search.start { response, error in
-                if let response = response {
-                    //If we have a valid response, extract the MKMapItems, and execute tableview reload on main queue.
-                    self.filteredPlaces = response.mapItems
-                    DispatchQueue.main.async {
-                        self.resultsController.tableView.reloadData()
-                    }
-                }
-            }
         } else {        //Remove annotations and blur the views to put the focus back on the search bar
             mapView.addBlurrEffect()
             mapView.removeAllAnnotations()
@@ -166,26 +172,40 @@ extension MapController: UITableViewDataSource, UITableViewDelegate {
         return filteredPlaces.count
     }
     
-        //Extract the result information from the mapKit item and apply to the cell labels.
+    //Extract the result information from the mapKit item and apply to the cell labels.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resultsControllerDefaultCellIdentifier) else { return UITableViewCell() }
-        let mapKitItem = filteredPlaces[indexPath.row]
-        cell.textLabel?.text = mapKitItem.name
-        cell.detailTextLabel?.text = mapKitItem.address
+        let placeSelected = filteredPlaces[indexPath.row]
+        cell.textLabel?.text = placeSelected.title
+        cell.detailTextLabel?.text = placeSelected.subtitle
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //Dismiss the results controller, update the map view and start the image fetch based on the chosen location
+        //Dismiss the results controller, find the location using the completion, update the map view and start the image fetch based on the chosen location
         resultsController.dismiss(animated: true, completion: {
             let resultsSelection = self.filteredPlaces[indexPath.row]
-            if let resultsCoordinate = resultsSelection.placemark.location?.coordinate {
-                self.imageView.removeBlurrEffect()
-                self.fetchEarthImageryData(at: resultsCoordinate)
-                self.mapView.removeBlurrEffect()
-                self.mapView.adjust(centreTo: resultsCoordinate, span: self.mapSpan)
-                self.mapView.addAnnotation(at: resultsCoordinate, title: resultsSelection.name, subTitle: resultsSelection.address)
+            let searchRequest = MKLocalSearch.Request(completion: resultsSelection)
+            searchRequest.region = self.mapView.region
+            
+            let search = MKLocalSearch(request: searchRequest)
+            
+            search.start { response, error in
+                if let response = response {
+                    //If we have a valid response, extract the MKMapItems, and execute tableview reload on main queue.
+                    let foundPlace = response.mapItems[0]
+                    if let resultsCoordinate = foundPlace.placemark.location?.coordinate {
+                        self.imageView.removeBlurrEffect()
+                        self.fetchEarthImageryData(at: resultsCoordinate)
+                        self.mapView.removeBlurrEffect()
+                        self.mapView.adjust(centreTo: resultsCoordinate, span: self.mapSpan)
+                        self.mapView.addAnnotation(at: resultsCoordinate, title: foundPlace.name, subTitle: foundPlace.address)
+                    }
+                } else {
+                    print("Error with search response: \(error?.localizedDescription ?? "Unknown Error")")
+                }
+                
             }
         })
     }

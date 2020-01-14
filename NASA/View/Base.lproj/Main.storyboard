@@ -355,11 +355,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipad_background_vert_x2" translatesAutoresizingMaskIntoConstraints="NO" id="TrG-9y-WV0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipad_background_vert_x2" translatesAutoresizingMaskIntoConstraints="NO" id="TrG-9y-WV0">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IJv-vf-igu" userLabel="Controls Stack View">
-                                <rect key="frame" x="0.0" y="1082" width="1024" height="264"/>
+                                <rect key="frame" x="0.0" y="1102" width="1024" height="264"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-Cx-qFe">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="41"/>
@@ -382,21 +382,21 @@
                                         <rect key="frame" x="0.0" y="48" width="1024" height="216"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-3X-mZr">
-                                                <rect key="frame" x="0.0" y="0.0" width="510" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382.5" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="7Z7-To-yyd" id="TwE-By-BN7"/>
                                                     <outlet property="delegate" destination="7Z7-To-yyd" id="yGE-kJ-3gX"/>
                                                 </connections>
                                             </pickerView>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
-                                                <rect key="frame" x="514" y="0.0" width="510" height="216"/>
+                                            <datePicker contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-br-wAv">
+                                                <rect key="frame" x="386.5" y="0.0" width="637.5" height="216"/>
                                                 <connections>
                                                     <action selector="dateSelected:" destination="7Z7-To-yyd" eventType="valueChanged" id="kpy-AM-hE1"/>
                                                 </connections>
                                             </datePicker>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="sFs-3X-mZr" firstAttribute="width" secondItem="JR1-br-wAv" secondAttribute="width" id="sv6-KM-E1B"/>
+                                            <constraint firstItem="sFs-3X-mZr" firstAttribute="width" secondItem="JR1-br-wAv" secondAttribute="width" multiplier="0.6" id="sv6-KM-E1B"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -408,7 +408,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-wm-UVX">
-                                <rect key="frame" x="0.0" y="50" width="1024" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1094"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zao-Jq-cBM">
                                     <size key="itemSize" width="50" height="50"/>
@@ -475,16 +475,16 @@
                             <constraint firstAttribute="bottom" secondItem="TrG-9y-WV0" secondAttribute="bottom" id="PBO-3n-mgC"/>
                             <constraint firstItem="TrG-9y-WV0" firstAttribute="leading" secondItem="Yan-7l-pMT" secondAttribute="leading" id="Pqo-nU-tkq"/>
                             <constraint firstAttribute="trailing" secondItem="TrG-9y-WV0" secondAttribute="trailing" id="Q0f-rT-K4y"/>
-                            <constraint firstItem="Lym-wm-UVX" firstAttribute="leading" secondItem="vEm-UE-Tbb" secondAttribute="leading" id="Sl8-v9-bVR"/>
-                            <constraint firstItem="vEm-UE-Tbb" firstAttribute="bottom" secondItem="IJv-vf-igu" secondAttribute="bottom" id="Syj-Jo-wF8"/>
+                            <constraint firstItem="Lym-wm-UVX" firstAttribute="leading" secondItem="Yan-7l-pMT" secondAttribute="leading" id="Sl8-v9-bVR"/>
+                            <constraint firstAttribute="bottom" secondItem="IJv-vf-igu" secondAttribute="bottom" id="Syj-Jo-wF8"/>
                             <constraint firstItem="IJv-vf-igu" firstAttribute="top" secondItem="Lym-wm-UVX" secondAttribute="bottom" constant="8" id="YIy-Cb-L1F"/>
                             <constraint firstAttribute="trailing" secondItem="IJv-vf-igu" secondAttribute="trailing" id="axH-zS-wqR"/>
-                            <constraint firstItem="vEm-UE-Tbb" firstAttribute="trailing" secondItem="Lym-wm-UVX" secondAttribute="trailing" id="eMU-eV-qZb"/>
+                            <constraint firstAttribute="trailing" secondItem="Lym-wm-UVX" secondAttribute="trailing" id="eMU-eV-qZb"/>
                             <constraint firstItem="IJv-vf-igu" firstAttribute="leading" secondItem="Yan-7l-pMT" secondAttribute="leading" id="kfl-cF-WOS"/>
                             <constraint firstItem="TrG-9y-WV0" firstAttribute="top" secondItem="Yan-7l-pMT" secondAttribute="top" id="ufs-NY-R4v"/>
-                            <constraint firstItem="Lym-wm-UVX" firstAttribute="top" secondItem="vEm-UE-Tbb" secondAttribute="top" id="zCp-nO-ZFz"/>
+                            <constraint firstItem="Lym-wm-UVX" firstAttribute="top" secondItem="Yan-7l-pMT" secondAttribute="top" id="zCp-nO-ZFz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vEm-UE-Tbb"/>
+                        <viewLayoutGuide key="safeArea" id="B2m-jm-AR8"/>
                     </view>
                     <navigationItem key="navigationItem" id="DC5-aS-8yA"/>
                     <connections>

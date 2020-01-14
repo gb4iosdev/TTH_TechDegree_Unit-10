@@ -37,7 +37,6 @@
 		86692C1823B591120047DA1E /* RoverPhotoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C1723B591120047DA1E /* RoverPhotoCollectionController.swift */; };
 		86692C1A23B593080047DA1E /* RoverPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86692C1923B593080047DA1E /* RoverPhotoCell.swift */; };
 		866BD44323C2AD9000DB027E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866BD44223C2AD9000DB027E /* View.swift */; };
-		866BD44523C2C7DD00DB027E /* Ailerons-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 866BD44423C2C76600DB027E /* Ailerons-Regular.otf */; };
 		866DCF4323B3F6B6001AEE0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DCF4223B3F6B6001AEE0F /* AppDelegate.swift */; };
 		866DCF4523B3F6B6001AEE0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DCF4423B3F6B6001AEE0F /* ViewController.swift */; };
 		866DCF4823B3F6B6001AEE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866DCF4623B3F6B6001AEE0F /* Main.storyboard */; };
@@ -45,6 +44,7 @@
 		866DCF4D23B3F6B7001AEE0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866DCF4B23B3F6B7001AEE0F /* LaunchScreen.storyboard */; };
 		8679FCCD23B3FA0500AC7AD3 /* NASAEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */; };
 		8679FCCF23B3FA5800AC7AD3 /* EndpointExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */; };
+		868429A423CD5DD5005F43D1 /* Ailerons-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 868429A323CD5DD5005F43D1 /* Ailerons-Regular.otf */; };
 		86B2281C23C5417400874860 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2281B23C5417400874860 /* Networker.swift */; };
 		86F6C05E23BA374A000656BF /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C05D23BA374A000656BF /* MapItem.swift */; };
 		86F6C06023BA3A39000656BF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F6C05F23BA3A39000656BF /* SearchResultCell.swift */; };
@@ -96,7 +96,6 @@
 		86692C1723B591120047DA1E /* RoverPhotoCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoverPhotoCollectionController.swift; path = NASA/View/RoverPhotoCollectionController.swift; sourceTree = SOURCE_ROOT; };
 		86692C1923B593080047DA1E /* RoverPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoCell.swift; sourceTree = "<group>"; };
 		866BD44223C2AD9000DB027E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		866BD44423C2C76600DB027E /* Ailerons-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ailerons-Regular.otf"; path = "/Users/Gavin/Data/Swift Dev/Education/Treehouse/TechDegree/TTH_TechDegree_Unit-10/NASA/View/Ailerons-Regular.otf"; sourceTree = "<absolute>"; };
 		866DCF3F23B3F6B6001AEE0F /* NASA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		866DCF4223B3F6B6001AEE0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		866DCF4423B3F6B6001AEE0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		866DCF4E23B3F6B7001AEE0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8679FCCC23B3FA0500AC7AD3 /* NASAEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NASAEndpoint.swift; sourceTree = "<group>"; };
 		8679FCCE23B3FA5800AC7AD3 /* EndpointExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointExamples.swift; sourceTree = "<group>"; };
+		868429A323CD5DD5005F43D1 /* Ailerons-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Regular.otf"; sourceTree = "<group>"; };
 		86B2281B23C5417400874860 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		86F6C05D23BA374A000656BF /* MapItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
 		86F6C05F23BA3A39000656BF /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				865D41F323B8DE670017BD3F /* PostCardTextView.swift */,
 				86F6C05F23BA3A39000656BF /* SearchResultCell.swift */,
 				862FA34B23BBDD0A000B81C7 /* AstronomyPhotoCell.swift */,
-				866BD44423C2C76600DB027E /* Ailerons-Regular.otf */,
+				868429A323CD5DD5005F43D1 /* Ailerons-Regular.otf */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 				866DCF4D23B3F6B7001AEE0F /* LaunchScreen.storyboard in Resources */,
 				866DCF4A23B3F6B7001AEE0F /* Assets.xcassets in Resources */,
 				866DCF4823B3F6B6001AEE0F /* Main.storyboard in Resources */,
-				866BD44523C2C7DD00DB027E /* Ailerons-Regular.otf in Resources */,
+				868429A423CD5DD5005F43D1 /* Ailerons-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

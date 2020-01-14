@@ -32,7 +32,7 @@ class RoverPhotoCollectionController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     //UI Interaction Element defaults
-    let datePickerDefaultTextColour = UIColor.white
+    let pickerDefaultTextColour = UIColor.white
     let datePickerStartingDate = "2015-11-05"
     let segmentedControlColour = UIColor.white
 
@@ -140,13 +140,23 @@ extension RoverPhotoCollectionController: UIPickerViewDelegate, UIPickerViewData
         return chosenRover.cameras.count
     }
     
-    //Picker view TitleForRow with attributes!
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    //Use viewForRow delegate method to return a view (UILabel) which allows for better control of the title formatting.
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else { return NSAttributedString(string: "Error") }
+        guard let segmentedControlSelection = roverSegmentedControl.titleForSegment(at: roverSegmentedControl.selectedSegmentIndex), let chosenRover = Rover(rawValue: segmentedControlSelection.lowercased()) else {
+            let errorLabel = UILabel()
+            errorLabel.text = "Error"
+            return errorLabel
+        }
         
-        let attributes = [NSAttributedString.Key.foregroundColor : datePickerDefaultTextColour]
-        return NSAttributedString(string: chosenRover.cameras[row].description, attributes: attributes)
+        let pickerLabel = UILabel()
+        let camera = chosenRover.cameras[row]
+        let attributes = [NSAttributedString.Key.foregroundColor : pickerDefaultTextColour]
+        let myTitle = NSAttributedString(string: camera.description, attributes: attributes)
+        pickerLabel.attributedText = myTitle
+        pickerLabel.adjustsFontSizeToFitWidth = true
+        pickerLabel.textAlignment = .center
+       return pickerLabel
     }
     
     //Use the selected row as input for the endpoint.
@@ -173,6 +183,7 @@ extension RoverPhotoCollectionController {
         datePicker.setValue(UIColor.white, forKey: "textColor")
         datePicker.maximumDate = Date(timeIntervalSinceNow: 0.0)
         datePicker.date = Date.fromEarthDate(datePickerStartingDate)!
+        datePicker.setValue(false, forKey: "highlightsToday")
      
         //Configure Segmented Control
         roverSegmentedControl.backgroundColor = UIColor.clear
